@@ -1,10 +1,10 @@
-// tailwind.config.js
 module.exports = {
+  darkmode:'class',
   content: [
-    '.src/app/**/*.{ts,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{ts,tsx}',
-    '.src/app/components/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}', // <- Add this if you're using /src
+    './components/**/*.{ts,tsx}',
+    './shared/**/*.{js,ts,jsx,tsx}', // if you use Tailwind in shared components
   ],
   theme: {
     extend: {},

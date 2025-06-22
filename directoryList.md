@@ -1,12 +1,13 @@
 |-- undefined
     |-- .gitignore
     |-- eslint.config.mjs
+    |-- generateProducts.ts
+    |-- generateUsers.ts
     |-- next-env.d.ts
     |-- next.config.ts
     |-- package-lock.json
     |-- package.json
     |-- postcss.config.js
-    |-- postcss.config.mjs
     |-- README.md
     |-- tailwind.config.js
     |-- tsconfig.json
@@ -23,56 +24,107 @@
         |   |-- layout.tsx
         |   |-- page.tsx
         |   |-- api
-        |       |-- auth.ts
-        |       |-- http.ts
-        |       |-- notifications.ts
-        |       |-- products.ts
-        |       |-- products
-        |           |-- route.ts
-        |           |-- [id]
-        |               |-- route.ts
+        |   |   |-- products
+        |   |   |   |-- route.ts
+        |   |   |   |-- [id]
+        |   |   |       |-- route.ts
+        |   |   |-- users
+        |   |       |-- route.ts
+        |   |       |-- [id]
+        |   |           |-- route.ts
+        |   |-- cart
+        |   |   |-- page.tsx
+        |   |-- home
+        |   |   |-- page.tsx
+        |   |-- orders
+        |   |   |-- page.tsx
+        |   |-- products
+        |   |   |-- page.tsx
+        |   |-- users
+        |       |-- page.tsx
+        |       |-- [id]
+        |           |-- page.tsx
         |-- features
         |   |-- auth
         |   |   |-- api.ts
         |   |   |-- schema.ts
+        |   |   |-- types.ts
         |   |   |-- hooks
         |   |       |-- useAuth.ts
+        |   |-- cart
+        |   |-- home
+        |   |   |-- api.ts
+        |   |   |-- hooks
+        |   |   |-- schema.ts
+        |   |   |-- types.ts
+        |   |   |-- components
+        |   |       |-- HomePage.tsx
         |   |-- notifications
         |   |   |-- api.ts
-        |   |   |-- page.tsx
         |   |   |-- schema.ts
+        |   |   |-- types.ts
         |   |   |-- hooks
         |   |       |-- useNotifications.ts
+        |   |-- orders
         |   |-- products
+        |   |   |-- api.ts
+        |   |   |-- schema.ts
+        |   |   |-- types.ts
+        |   |   |-- components
+        |   |   |   |-- EditableProductRow.tsx
+        |   |   |   |-- ProductForm.tsx
+        |   |   |   |-- ProductList.tsx
+        |   |   |-- hooks
+        |   |   |   |-- useCreateProduct.ts
+        |   |   |   |-- useDeleteProduct.ts
+        |   |   |   |-- useProducts.ts
+        |   |   |   |-- useUpdateProduct.ts
+        |   |   |-- modals
+        |   |       |-- ConfirmDeleteModal.tsx
+        |   |       |-- EditProductModal.tsx
+        |   |-- users
         |       |-- api.ts
-        |       |-- page.tsx
         |       |-- schema.ts
-        |       |-- types.ts
+        |       |-- type.ts
         |       |-- components
-        |       |   |-- EditableProductRow.tsx
-        |       |   |-- ProductForm.tsx
-        |       |   |-- ProductList.tsx
+        |       |   |-- EditableUserRow.tsx
+        |       |   |-- UserActions.tsx
+        |       |   |-- UserForm.tsx
+        |       |   |-- UserList.tsx
+        |       |   |-- UserMeta.tsx
+        |       |   |-- UserProfileCard.tsx
         |       |-- hooks
-        |       |   |-- useCreateProduct.ts
-        |       |   |-- useDeleteProduct.ts
-        |       |   |-- useProducts.ts
-        |       |   |-- useUpdateProduct.ts
+        |       |   |-- useCreateUser.ts
+        |       |   |-- useDeleteUser.ts
+        |       |   |-- useUpdateUser.ts
+        |       |   |-- useUsers.ts
         |       |-- modals
         |           |-- ConfirmDeleteModal.tsx
-        |           |-- EditProductModal.tsx
+        |           |-- CreateUserModal.tsx
+        |           |-- EditUserModal.tsx
         |-- lib
         |   |-- data
         |   |   |-- productsData.ts
+        |   |   |-- usersData.ts
         |   |-- db
         |       |-- products.json
         |       |-- products.ts
+        |       |-- products10000.json
+        |       |-- products100000.json
+        |       |-- products25000.json
+        |       |-- products50000.json
+        |       |-- users.json
+        |       |-- users.ts
+        |       |-- users10000.json
         |-- shared
             |-- components
-            |   |-- NavigationLink.tsx
+            |   |-- Navbar.tsx
+            |   |-- Pagination.tsx
             |   |-- ui
             |       |-- Button.tsx
             |       |-- InputField.tsx
             |-- lib
+            |   |-- api.ts
             |   |-- queryClient.ts
             |   |-- utils
             |       |-- crypto.ts
