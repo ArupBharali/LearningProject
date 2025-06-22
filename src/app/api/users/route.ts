@@ -4,6 +4,7 @@ import { getUsers, addUser } from '@/lib/data/usersData';
 import { nanoid } from 'nanoid';
 
 export async function GET() {
+  console.log('GET arup');
   return NextResponse.json(await getUsers());
 }
 

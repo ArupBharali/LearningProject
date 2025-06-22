@@ -5,9 +5,10 @@ import { EditableUserRow } from "@/features/users/components/EditableUserRow";
 import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import { Pagination } from "@/shared/components/Pagination";
 import { useState, useMemo } from "react";
+import { Spinner } from "@/shared/components/ui/Spinner";
 
 const PAGE_SIZE = 50;
-const ROW_HEIGHT = 45; // or whatever fits your layout
+const ROW_HEIGHT = 70; // or whatever fits your layout
 
 export function UserList() {
   const { data: users, isLoading, isFetched, isFetching, status } = useUsers();
@@ -36,7 +37,12 @@ export function UserList() {
     ) : null;
   };
 
-  if (isLoading) return <p className="text-gray-600">Loading users...</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center py-6">
+        <Spinner />
+      </div>
+    );
   if (!users || users.length === 0) return <p>No Users found</p>;
 
   return (

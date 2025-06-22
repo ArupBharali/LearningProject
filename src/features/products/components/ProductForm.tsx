@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useCreateProduct } from '@/features/products/hooks/useCreateProduct';
-import { InputField } from '@/shared/components/ui/InputField';
-import { Button } from '@/shared/components/ui/Button';
+import { useState } from "react";
+import { useCreateProduct } from "@/features/products/hooks/useCreateProduct";
+import { InputField } from "@/shared/components/ui/InputField";
+import { Button } from "@/shared/components/ui/Button";
 
 export function ProductForm() {
   const { mutate, isPending, isError, error, data } = useCreateProduct();
-  const [form, setForm] = useState({ title: '', price: '', inventory: '' });
+  const [form, setForm] = useState({ title: "", price: "", inventory: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,32 +15,30 @@ export function ProductForm() {
       title: form.title,
       price: parseFloat(form.price),
       inventory: parseInt(form.inventory),
-      tags: ['demo']
+      tags: ["demo"],
     });
   };
 
   return (
     <section>
-      <h2 className="text-xl font-semibold mb-4">Create Product</h2>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
-      >
+      <h2 className="text-xl font-semibold mb-4">🛍️ Create Product</h2>
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <InputField
           type="text"
-          placeholder="Title"
+          placeholder="Product Title"
           value={form.title}
           onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
         />
         <InputField
           type="number"
-          placeholder="Price"
+          placeholder="Price (e.g. 999.99)"
           value={form.price}
           onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
         />
         <InputField
           type="number"
-          placeholder="Inventory"
+          placeholder="Inventory count"
           value={form.inventory}
           onChange={(e) =>
             setForm((f) => ({ ...f, inventory: e.target.value }))
@@ -52,14 +50,13 @@ export function ProductForm() {
       </form>
 
       {isError && (
-        <p className="mt-2 text-sm text-red-600">
+        <p className="mt-4 text-sm text-red-600">
           ❌ {(error as Error).message}
         </p>
       )}
+
       {data && (
-        <p className="mt-2 text-sm text-green-600">
-          ✅ Created: {data.title}
-        </p>
+        <p className="mt-4 text-sm text-green-600">✅ Created: {data.title}</p>
       )}
     </section>
   );

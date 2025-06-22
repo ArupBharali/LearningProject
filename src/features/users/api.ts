@@ -17,20 +17,16 @@ export async function fetchUsers(): Promise<User[]> {
   return parseUsers(data);
 }
 export async function updateUser(id: string, updates: Partial<CreateUserInput>): Promise<User> {
-  const res = await apiFetch<User>(`/api/users/${id}`, {
+  return await apiFetch<User>(`/api/users/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(updates)
   });
-
-  return res;
 }
 
 export async function deleteUser(id: string): Promise<{ success: boolean }> {
-  const res = await apiFetch<{ success: boolean }>(`/api/users/${id}`, {
+  return await apiFetch<{ success: boolean }>(`/api/users/${id}`, {
     method: 'DELETE'
   });
-
-  return res;
 }
 
 export async function createUser(input: CreateUserInput): Promise<User> {
@@ -40,10 +36,8 @@ export async function createUser(input: CreateUserInput): Promise<User> {
     throw new Error('Invalid input');
   }
 
-  const res = await apiFetch<User>('/api/users', {
+  return await apiFetch<User>('/api/users', {
     method: 'POST',
     body: JSON.stringify(parsed.data)
   });
-
-  return res;
 }

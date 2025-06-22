@@ -20,7 +20,7 @@ export function UserForm() {
 
   return (
     <section>
-      <h2 className="text-xl font-semibold mb-4">Create User</h2>
+      <h2 className="text-xl font-semibold mb-4">🧑‍💼 Create User</h2>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4"
