@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -23,7 +23,7 @@ export function withAuthGuard<P extends object>(
     }, []);
 
     if (!hydrated) {
-      return <><Spinner/></>; // wait for hydration
+      return <Spinner/>; // wait for hydration
     }
 
     if (!isAuthenticated || !user) {

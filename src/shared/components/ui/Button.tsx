@@ -10,6 +10,7 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "danger";
   size?: "sm" | "md" | "lg";
   outline?: boolean;
+  className?: string;
 };
 
 export function Button({
@@ -20,7 +21,8 @@ export function Button({
   onClick,
   variant = "primary",
   size = "md",
-  outline = false
+  outline = false,
+  className
 }: ButtonProps) {
  const base =
   'rounded font-medium transition disabled:opacity-50 disabled:cursor-not-allowed';
@@ -51,7 +53,7 @@ export function Button({
       type={type}
       disabled={disabled || isLoading}
       onClick={onClick}
-      className={`${base} ${variantClasses[variant]} ${buttonSize}`}
+      className={`${base} ${variantClasses[variant]} ${buttonSize} ${className} ?? ''`}
     >
       {isLoading ? "Loading…" : children}
     </button>

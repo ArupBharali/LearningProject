@@ -9,6 +9,7 @@ import { logout } from "@/shared/store/slices/authSlice";
 import Image from "next/image";
 
 const links = [
+  { href: "/react-concepts", label: "Interview Questions" },
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/users", label: "Users" },
