@@ -2,7 +2,7 @@ import { apiFetch } from '@/shared/lib/api';
 import {
   parseProducts,
   parseProduct,
-  CreateProductSchema,
+  productSchema,
   CreateProductInput,
   Product
 } from '@/features/products/schema';
@@ -34,7 +34,7 @@ export async function deleteProduct(id: string): Promise<{ success: boolean }> {
 }
 
 export async function createProduct(input: CreateProductInput): Promise<Product> {
-  const parsed = CreateProductSchema.safeParse(input);
+  const parsed = productSchema.safeParse(input);
   if (!parsed.success) {
     console.error('❌ Validation failed', parsed.error.format());
     throw new Error('Invalid input');

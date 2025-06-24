@@ -6,18 +6,14 @@ import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import { Pagination } from "@/shared/components/Pagination";
 import { useState, useMemo } from "react";
 import { Spinner } from "@/shared/components/ui/Spinner";
+import { ProductListProps } from "../types";
 
 const PAGE_SIZE = 50;
 const ROW_HEIGHT = 70; // or whatever fits your layout
 
-export function ProductList() {
-  const {
-    data: products,
-    isLoading,
-    isFetched,
-    isFetching,
-    status,
-  } = useProducts();
+
+export function ProductList({products, isLoading, isFetched, isFetching} : ProductListProps) {
+  
   const [page, setPage] = useState(1);
   const totalPages = products ? Math.ceil(products.length / PAGE_SIZE) : 0;
 

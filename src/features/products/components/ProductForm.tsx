@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCreateProduct } from "@/features/products/hooks/useCreateProduct";
 import { InputField } from "@/shared/components/ui/InputField";
 import { Button } from "@/shared/components/ui/Button";
+import FileUploader from "@/shared/components/FileUploader";
 
 export function ProductForm() {
   const { mutate, isPending, isError, error, data } = useCreateProduct();
@@ -44,6 +45,13 @@ export function ProductForm() {
             setForm((f) => ({ ...f, inventory: e.target.value }))
           }
         />
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+            Product Image
+          </label>
+          <FileUploader />
+        </div>
+
         <Button type="submit" isLoading={isPending}>
           Create Product
         </Button>

@@ -1,18 +1,34 @@
 import { z } from 'zod';
 
-const ProductSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  price: z.number()
+export const productSchema = z.object({
+  id: z.string().uuid(),
+  title: z.string().min(1, "Title is required"),
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Invalid slug format"),
+  description: z.string().max(2000).optional(),
+  summary: z.string().max(300).optional(),
+  price: z.number().nonnegative(),
+  discountPercentage: z.number().min(0).max(100).default(0),
+  inventory: z.number().int().nonnegative(),
+  sku: z.string().optional(),
+  barcode: z.string().optional(),
+  category: z.string(),
+  subcategory: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  brand: z.string().optional(),
+  isActive: z.boolean().default(true),
+  featured: z.boolean().default(false),
+  rating: z.number().min(0).max(5).default(0),
+  
 });
 
-const ExtendedProductSchema = ProductSchema.extend({
-  inventory: z.number().nonnegative(),
-  tags: z.array(z.string()).default([]),
-  createdAt: z.string().datetime()
+
+const ExtendedProductSchema = productSchema.extend({
+  images: z.array(z.string().url()).optional()
 });
 
 const MetaSchema = z.object({
+  createdAt: z.string().datetime(),
+  createdBy: z.string(),
   updatedBy: z.string(),
   updatedAt: z.string().datetime()
 });
@@ -34,20 +50,13 @@ export const ValidatedProductSchema = ProductWithMeta
 
 export const ValidatedProductArraySchema = z.array(ValidatedProductSchema);
 
-export const CreateProductSchema = z.object({
-  title: z.string().min(1),
-  price: z.number().positive(),
-  inventory: z.number().nonnegative(),
-  tags: z.array(z.string()).optional()
-});
-
 export const ProductApiResponseSchema = z.object({
   products: ValidatedProductArraySchema
 });
 
 export type Product = z.infer<typeof ValidatedProductSchema>;
 export type Products = z.infer<typeof ValidatedProductArraySchema>;
-export type CreateProductInput = z.infer<typeof CreateProductSchema>;
+export type CreateProductInput = z.infer<typeof productSchema>;
 
 export function parseProduct(data: unknown): Product {
   const result = ValidatedProductSchema.safeParse(data);

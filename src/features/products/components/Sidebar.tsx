@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/shared/store';
 import { toggleSidebar } from '@/shared/store/slices/uiSlice';
 import { XMarkIcon } from '@heroicons/react/24/outline'; // Optional icon (Heroicons)
+import Link from 'next/link';
 
 export function Sidebar() {
   const isOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
@@ -21,15 +22,18 @@ export function Sidebar() {
         </button>
       </div>
       <nav className="p-4 space-y-2">
-        <a href="/" className="block text-gray-700 hover:text-blue-600">
+        <Link href="/" className="block text-gray-700 hover:text-blue-600">
           Dashboard
-        </a>
-        <a href="/products" className="block text-gray-700 hover:text-blue-600">
+        </Link>
+        <Link href="/products" className="block text-gray-700 hover:text-blue-600">
           Products
-        </a>
-        <a href="/users" className="block text-gray-700 hover:text-blue-600">
+        </Link>
+        <Link href="/users" className="block text-gray-700 hover:text-blue-600">
           Users
-        </a>
+        </Link>
+        <Link href="/react-concepts" className="block text-gray-700 hover:text-blue-600">
+          React Concepts
+        </Link>
         {/* Add more links as needed */}
       </nav>
     </aside>

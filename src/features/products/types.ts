@@ -1,5 +1,8 @@
-export type Product = {
-  id: string;
-  title: string;
-  price: number;
-};
+import { Products } from "./schema"
+
+export type ProductListProps = {
+  products: Products[],
+  isLoading: boolean,
+  isFetched: boolean,
+  isFetching: boolean
+}
