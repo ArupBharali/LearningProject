@@ -11,6 +11,7 @@
     "folders": "npx tree -I 'node_modules|.git' -L 3",
     "create-folder-structure": "npx mddir .",
     "generate-fake-products": "npx tsx generateProducts.ts",
+    "generate-fake-employees": "npx tsx generateEmployees.ts",
     "generate-fake-users": "npx tsx generateUsers.ts",
     "remove-cache-folders": "Remove-Item -Recurse -Force .next, .turbo"
   },
@@ -26,15 +27,20 @@
     "@tanstack/react-query-persist-client": "^5.80.10",
     "@tanstack/react-table": "^8.21.3",
     "@tanstack/react-virtual": "^3.13.11",
+    "faker": "^6.6.6",
     "framer-motion": "^12.19.1",
+    "lodash.debounce": "^4.0.8",
     "lowdb": "^7.0.1",
+    "nanoid": "^5.1.5",
     "next": "15.3.4",
     "react": "^19.0.0",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.58.1",
     "react-hot-toast": "^2.5.2",
     "react-redux": "^9.2.0",
     "react-window": "^1.8.11",
+    "uuid": "^11.1.0",
     "zod": "^3.25.67"
   },
   "devDependencies": {
@@ -49,7 +55,8 @@
     "eslint-config-next": "15.3.4",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   }
 }
