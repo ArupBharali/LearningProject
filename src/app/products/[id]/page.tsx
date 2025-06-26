@@ -5,9 +5,8 @@ import { parseUser } from '@/features/users/schema';
 import { UserProfileCard } from '@/features/users/components/UserProfileCard';
 import { UserMeta } from '@/features/users/components/UserMeta';
 import { UserActions } from '@/features/users/components/UserActions';
-import { withAuthGuard } from '@/shared/guards/withAuthGuard';
 
-async function ProductDetailPage({
+export default async function ProductDetailPage({
   params,
 }: {
   params: { id: string };
@@ -38,5 +37,3 @@ async function ProductDetailPage({
     </main>
   );
 }
-
-export default withAuthGuard(ProductDetailPage, ["admin"])

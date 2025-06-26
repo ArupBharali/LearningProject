@@ -7,6 +7,43 @@ export async function getProducts(): Promise<{ "products": Product[]}> {
   return db.data!;
 }
 
+export async function getFilteredProducts({
+  where,
+  skip,
+  take,
+}: {
+  where: Record<string, any>;
+  skip: number;
+  take: number;
+}) {
+  await initDB();
+  const allProducts = db.data!.products;
+
+  // Filter products
+  const filtered = allProducts.filter((product) => {
+    return Object.entries(where).every(([key, condition]) => {
+      const value = (product as any)[key];
+
+      // Case-insensitive partial match
+      if (typeof condition === 'object' && condition.contains) {
+        return String(value).toLowerCase().includes(String(condition.contains).toLowerCase());
+      }
+
+      // Boolean or exact match
+      return value === condition;
+    });
+  });
+console.log('arup3',filtered[0]);
+  // Paginate
+  const paginated = filtered.slice(skip, skip + take);
+// console.log('arup4',paginated);
+  return {
+    data: paginated,
+    total: filtered.length,
+  };
+}
+
+
 export async function getProductById(id: string): Promise<Product | null> {
   await initDB();
   return db.data!.products.find(p => p.id === id) || null;

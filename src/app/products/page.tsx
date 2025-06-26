@@ -7,11 +7,11 @@ import { CreateProductModal } from "@/features/products/modals/CreateProductModa
 import { Spinner } from "@/shared/components/ui/Spinner";
 import { SidebarToggle } from "@/shared/components/SidebarToggle";
 import { Sidebar } from "@/features/products/components/Sidebar";
-import { withAuthGuard } from "@/shared/guards/withAuthGuard";
 import ProductDataTable from "@/features/products/components/ProductDataTable";
-import { useProducts } from "@/features/products/hooks/useProducts";
+import { useProductsQuery } from "@/features/products/hooks/useProductsQuery";
+import { useFilteredProductsQuery } from "@/features/products/hooks/useFilteredProductsQuery";
 
-function Products() {
+export default function Products() {
   const [showList, setShowList] = useState(false);
   const [showProductDataTable, setShowProductDataTable] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -22,13 +22,6 @@ function Products() {
       setShowList(true);
     });
   }, []);
-
-  const {
-    data: products,
-    isLoading,
-    isFetched,
-    isFetching,
-  } = useProducts();
 
   return (
     <div>
@@ -74,21 +67,11 @@ function Products() {
             </div>
           )}
 
-          {showProductDataTable && <ProductDataTable 
-          products={products}
-                isFetched={isFetched}
-                isFetching={isFetching}
-                isLoading={isLoading}
-          />}
+          {showProductDataTable && <ProductDataTable />}
 
           {showList && (
             <div className="bg-white rounded-lg shadow p-4 sm:p-6">
-              <ProductList
-                products={products}
-                isFetched={isFetched}
-                isFetching={isFetching}
-                isLoading={isLoading}
-              />
+              <ProductList />
             </div>
           )}
         </div>
@@ -97,4 +80,3 @@ function Products() {
   );
 }
 
-export default withAuthGuard(Products, ["admin", "manager", "user"]);

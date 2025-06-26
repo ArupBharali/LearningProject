@@ -1,12 +1,14 @@
-"use client"
 
-import { withAuthGuard } from '@/shared/guards/withAuthGuard';
+import AuthWrapper from '@/shared/components/AuthWrapper';
 
-function Cart (){
-
-    return (
-        <h2>Under Development</h2>
-    )
+function Cart1() {
+  return <h2>Under Development</h2>;
 }
 
-export default withAuthGuard(Cart, ["admin", "manager", "user"]);
+export default function Cart() {
+  return (
+    <AuthWrapper allowedRoles={['admin', 'manager', 'user']}>
+      <Cart1 />
+    </AuthWrapper>
+  );
+}

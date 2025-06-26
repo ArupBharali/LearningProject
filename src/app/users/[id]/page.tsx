@@ -5,9 +5,9 @@ import { parseUser } from '@/features/users/schema';
 import { UserProfileCard } from '@/features/users/components/UserProfileCard';
 import { UserMeta } from '@/features/users/components/UserMeta';
 import { UserActions } from '@/features/users/components/UserActions';
-import { withAuthGuard } from '@/shared/guards/withAuthGuard';
+import AuthWrapper from '@/shared/components/AuthWrapper';
 
-async function UserDetailPage({
+export default async function UserDetailPage({
   params,
 }: {
   params: { id: string };
@@ -26,6 +26,7 @@ async function UserDetailPage({
   const user = parseUser(data);
 
   return (
+    <AuthWrapper allowedRoles={['admin']}>
     <main className="max-w-3xl mx-auto p-8">
       <UserProfileCard id={user.id}/>
       <UserMeta
@@ -36,7 +37,6 @@ async function UserDetailPage({
       />
       <UserActions />
     </main>
+    </AuthWrapper>
   );
 }
-
-export default withAuthGuard(UserDetailPage, ["admin"])

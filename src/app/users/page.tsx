@@ -5,9 +5,8 @@ import { UserList } from "@/features/users/components/UserList";
 import { Button } from "@/shared/components/ui/Button";
 import { CreateUserModal } from "@/features/users/modals/CreateUserModal";
 import { Spinner } from "@/shared/components/ui/Spinner";
-import {withAuthGuard} from '@/shared/guards/withAuthGuard';
 
-function Users() {
+export default function Users() {
   const [showList, setShowList] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [modalOpen, setModalOpen] = useState(false);
@@ -52,5 +51,3 @@ function Users() {
     </main>
   );
 }
-
-export default withAuthGuard(Users, ["admin"]);
