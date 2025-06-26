@@ -32,7 +32,11 @@ export const productColumns: ColumnDef<Product>[] = [
     cell: (info) => `$${info.getValue<number>().toFixed(2)}`,
     size: 120,
     enableColumnFilter: true,
-    filterFn: 'includesString'
+    filterFn: (row, columnId, filterValue) => {
+        const val = row.getValue<number>(columnId);
+        const input = Number(filterValue);
+        return !isNaN(input) && val.toString().includes(input.toString());
+    }
   },
   {
     accessorKey: 'discountPercentage',
