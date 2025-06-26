@@ -1,6 +1,6 @@
 'use client';
 
-import { useDeleteProduct } from '@/features/products/hooks/useDeleteProduct';
+import { useDeleteProduct } from '@/features/products/hooks/useDeleteProductQuery';
 import { Button } from '@/shared/components/ui/Button';
 import { toast } from 'react-hot-toast';
 

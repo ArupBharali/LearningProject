@@ -1,40 +1,34 @@
-"use client";
+'use client';
 
-import { useProducts } from "@/features/products/hooks/useProducts";
-import { EditableProductRow } from "@/features/products/components/EditableProductRow";
-import { FixedSizeList as List, ListChildComponentProps } from "react-window";
-import { Pagination } from "@/shared/components/Pagination";
-import { useState, useMemo } from "react";
-import { Spinner } from "@/shared/components/ui/Spinner";
-import { ProductListProps } from "../types";
+import { useProductsQuery } from '@/features/products/hooks/useProductsQuery';
+import { EditableProductRow } from '@/features/products/components/EditableProductRow';
+import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+import { Pagination } from '@/shared/components/Pagination';
+import { useState, useMemo, useEffect } from 'react';
+import { Spinner } from '@/shared/components/ui/Spinner';
 
 const PAGE_SIZE = 50;
 const ROW_HEIGHT = 70; // or whatever fits your layout
 
-
-export function ProductList({products, isLoading, isFetched, isFetching} : ProductListProps) {
-  
+export function ProductList() {
   const [page, setPage] = useState(1);
-  const totalPages = products ? Math.ceil(products.length / PAGE_SIZE) : 0;
+  useEffect(() => {
+    console.log('✅ ProductList rendered on client', page, PAGE_SIZE);
+  }, [page]);
 
-  const paginatedProducts = useMemo(() => {
-    if (!products) return [];
-    const start = (page - 1) * PAGE_SIZE;
-    return products.slice(start, start + PAGE_SIZE);
-  }, [products, page]);
+  const { data, isLoading } = useProductsQuery(page, PAGE_SIZE);
 
-  console.log("isLoading?", isLoading);
-  console.log("isFetched?", isFetched);
-  console.log("isFetching?", isFetching);
-  console.log("Status:", status);
+  const products = data?.data ?? [];
+  const totalProductsCount = data?.total ?? 0;
+  const totalPages = products ? Math.ceil(totalProductsCount / PAGE_SIZE) : 0;
 
   const Row = ({ index, style }: ListChildComponentProps) => {
-    const user = paginatedProducts[index];
+    const product = products[index];
     const serial = (page - 1) * PAGE_SIZE + index + 1;
 
-    return user ? (
+    return product ? (
       <div style={style}>
-        <EditableProductRow product={user} serial={serial} />
+        <EditableProductRow product={product} serial={serial} />
       </div>
     ) : null;
   };
@@ -45,14 +39,14 @@ export function ProductList({products, isLoading, isFetched, isFetching} : Produ
         <Spinner />
       </div>
     );
-  if (!products || products.length === 0) return <p>No Users found</p>;
+  if (!products || products.length === 0) return <p>No products found</p>;
 
   return (
     <>
       <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
       <List
         height={400}
-        itemCount={paginatedProducts?.length}
+        itemCount={products?.length}
         itemSize={ROW_HEIGHT}
         width="100%"
       >

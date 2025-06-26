@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 type Props = {
   question: string;
@@ -13,9 +13,10 @@ export function ProgressiveAnswersAccordion({ question, answers }: Props) {
 
   const handleQuestionClick = () => {
     if (!isOpen) {
-      setIsOpen(true);
-      setAnswerIndex(0); // start from the beginning on first open
+      // start from the beginning on first open
     }
+    setIsOpen((prev) => !prev);
+    setAnswerIndex(0);
   };
 
   const handleAnswerClick = () => {
@@ -26,18 +27,18 @@ export function ProgressiveAnswersAccordion({ question, answers }: Props) {
     <div>
       <button
         onClick={handleQuestionClick}
-        className="text-left font-medium text-blue-600 hover:underline"
+        className="cursor-pointer text-gray-800 hover:text-blue-600 transition-colors"
       >
         {question}
       </button>
 
       {isOpen && (
-        <div
-          className="mt-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
+        <pre
+          className="whitespace-pre-wrap break-words overflow-x-auto mt-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer"
           onClick={handleAnswerClick}
         >
-          💡 {`${answerIndex+1} - ${answers[answerIndex]}`}
-        </div>
+          <code>💡 {`${answerIndex + 1} - ${answers[answerIndex]}`}</code>
+        </pre>
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useUpdateProduct } from '@/features/products/hooks/useUpdateProduct';
+import { useUpdateProduct } from '@/features/products/hooks/Query';
 import { InputField } from '@/shared/components/ui/InputField';
 import { Button } from '@/shared/components/ui/Button';
 

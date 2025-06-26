@@ -54,6 +54,13 @@ export const ProductApiResponseSchema = z.object({
   products: ValidatedProductArraySchema
 });
 
+export const ProductsApiResponseSchema = z.object({
+  data: z.array(ValidatedProductSchema),
+  total: z.number(),
+})
+
+export type ProductsApiResponse = z.infer<typeof ProductsApiResponseSchema>;
+
 export type Product = z.infer<typeof ValidatedProductSchema>;
 export type Products = z.infer<typeof ValidatedProductArraySchema>;
 export type CreateProductInput = z.infer<typeof productSchema>;
@@ -67,11 +74,11 @@ export function parseProduct(data: unknown): Product {
   return result.data;
 }
 
-export function parseProducts(data: unknown): Products {
-  const result = ProductApiResponseSchema.safeParse(data);
+export function parseProductsApiResponse(data: unknown): ProductsApiResponse {
+  const result = ProductsApiResponseSchema.safeParse(data);
   if (!result.success) {
-    console.error('❌ Products validation failed:', result.error.format());
-    throw new Error('Invalid products data');
+    console.error('❌ Api response products validation failed:', result.error.format());
+    throw new Error('Invalid api response products structure');
   }
-  return result.data.products;
+  return result.data;
 }

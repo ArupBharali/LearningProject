@@ -4,22 +4,59 @@ import {
   parseProduct,
   productSchema,
   CreateProductInput,
-  Product
+  Product,
+  parseProductsApiResponse,
+  ProductsApiResponse,
 } from '@/features/products/schema';
 
 export async function fetchProductById(id: string) {
-  const data =  await apiFetch(`/api/products/${id}`);
+  const data = await apiFetch(`/api/products/${id}`);
   return parseProduct(data);
 }
 
-export async function fetchProducts(): Promise<Product[]> {
-  const data = await apiFetch('/api/products');
-  return parseProducts(data);
+type ProductsResponse = {
+  data: Product[];
+  total: number;
+};
+
+export async function fetchProducts(
+  page: number,
+  pageSize: number
+): Promise<ProductsApiResponse> {
+  console.log('fetchProducts arguments', page, pageSize);
+  const data = await apiFetch('/api/products', {
+    params: {
+      page,
+      pageSize,
+    },
+  });
+  console.log('fetchProducts api response data', data);
+  return parseProductsApiResponse(data);
 }
-export async function updateProduct(id: string, updates: Partial<CreateProductInput>): Promise<Product> {
+export async function fetchFilteredProducts(
+  page: number,
+  pageSize: number,
+  filters: Record<string, string>
+): Promise<ProductsApiResponse> {
+  console.log('fetchProducts arguments', page, pageSize);
+
+  const data = await apiFetch('/api/products', {
+    params: {
+      page,
+      pageSize,
+      ...filters,
+    },
+  });
+  console.log('fetchFilteredProducts api response data', data);
+  return parseProductsApiResponse(data);
+}
+export async function updateProduct(
+  id: string,
+  updates: Partial<CreateProductInput>
+): Promise<Product> {
   const res = await apiFetch<Product>(`/api/products/${id}`, {
     method: 'PATCH',
-    body: JSON.stringify(updates)
+    body: JSON.stringify(updates),
   });
 
   return res;
@@ -27,13 +64,15 @@ export async function updateProduct(id: string, updates: Partial<CreateProductIn
 
 export async function deleteProduct(id: string): Promise<{ success: boolean }> {
   const res = await apiFetch<{ success: boolean }>(`/api/products/${id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
   });
 
   return res;
 }
 
-export async function createProduct(input: CreateProductInput): Promise<Product> {
+export async function createProduct(
+  input: CreateProductInput
+): Promise<Product> {
   const parsed = productSchema.safeParse(input);
   if (!parsed.success) {
     console.error('❌ Validation failed', parsed.error.format());
@@ -42,7 +81,7 @@ export async function createProduct(input: CreateProductInput): Promise<Product>
 
   const res = await apiFetch<Product>('/api/products', {
     method: 'POST',
-    body: JSON.stringify(parsed.data)
+    body: JSON.stringify(parsed.data),
   });
 
   return res;

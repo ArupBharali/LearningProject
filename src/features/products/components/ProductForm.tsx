@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useCreateProduct } from "@/features/products/hooks/useCreateProduct";
+import { useCreateProduct } from "@/features/products/hooks/useCreateProductQuery";
 import { InputField } from "@/shared/components/ui/InputField";
 import { Button } from "@/shared/components/ui/Button";
 import FileUploader from "@/shared/components/FileUploader";
