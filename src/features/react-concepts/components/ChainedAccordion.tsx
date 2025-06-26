@@ -15,9 +15,7 @@ export function ChainedAccordion({ question, answers }: ChainedAccordionProps) {
 
   const revealNext = (index: number) => {
     if (index + 1 < visible.length) {
-      setVisible((prev) =>
-        prev.map((v, i) => (i === index + 1 ? true : v))
-      );
+      setVisible((prev) => prev.map((v, i) => (i === index + 1 ? true : v)));
     }
   };
 
@@ -35,7 +33,9 @@ export function ChainedAccordion({ question, answers }: ChainedAccordionProps) {
                 // or put this in onClick if desired
                 onToggle={() => revealNext(idx)}
               >
-                <p className="text-sm text-gray-700 dark:text-gray-300">{ans}</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  {ans}
+                </p>
               </Accordion>
             </li>
           ) : null

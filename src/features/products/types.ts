@@ -1,8 +1,8 @@
-import { Products } from "./schema"
+import { Products } from './schema';
 
 export type ProductListProps = {
-  products: Products[],
-  isLoading: boolean,
-  isFetched: boolean,
-  isFetching: boolean
-}
+  products: Products[];
+  isLoading: boolean;
+  isFetched: boolean;
+  isFetching: boolean;
+};

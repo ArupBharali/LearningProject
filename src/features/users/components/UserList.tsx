@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useUsers } from "@/features/users/hooks/useUsers";
-import { EditableUserRow } from "@/features/users/components/EditableUserRow";
-import { FixedSizeList as List, ListChildComponentProps } from "react-window";
-import { Pagination } from "@/shared/components/Pagination";
-import { useState, useMemo } from "react";
-import { Spinner } from "@/shared/components/ui/Spinner";
+import { useUsers } from '@/features/users/hooks/useUsers';
+import { EditableUserRow } from '@/features/users/components/EditableUserRow';
+import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
+import { Pagination } from '@/shared/components/Pagination';
+import { useState, useMemo } from 'react';
+import { Spinner } from '@/shared/components/ui/Spinner';
 
 const PAGE_SIZE = 50;
 const ROW_HEIGHT = 70; // or whatever fits your layout
@@ -21,10 +21,10 @@ export function UserList() {
     return users.slice(start, start + PAGE_SIZE);
   }, [users, page]);
 
-  console.log("isLoading?", isLoading); // true if it's from cache or network
-  console.log("isFetched?", isFetched); // true if it's from cache or network
-  console.log("isFetching?", isFetching); // true if it's from cache or network
-  console.log("Status:", status); // 'success', 'loading', etc.
+  console.log('isLoading?', isLoading); // true if it's from cache or network
+  console.log('isFetched?', isFetched); // true if it's from cache or network
+  console.log('isFetching?', isFetching); // true if it's from cache or network
+  console.log('Status:', status); // 'success', 'loading', etc.
 
   const Row = ({ index, style }: ListChildComponentProps) => {
     const user = paginatedUsers[index];

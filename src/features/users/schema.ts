@@ -1,11 +1,11 @@
 // features/auth/schema.ts or shared/types/user.ts
-import { z } from "zod";
+import { z } from 'zod';
 
 export const UserSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1).max(100),
   email: z.string().email(),
-  role: z.enum(["admin", "user", "manager"]).default("user"),
+  role: z.enum(['admin', 'user', 'manager']).default('user'),
   avatarUrl: z.string().url().optional(),
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
@@ -21,17 +21,15 @@ const MetaSchema = z.object({
 
 const UserWithMeta = UserSchema.merge(MetaSchema);
 
-
 // Transformed + refined schema
-export const ValidatedUserSchema = UserWithMeta
-  .transform((data) => ({
-    ...data,
-    initials: data.name
-      .split(' ')
-      .map((n) => n[0].toUpperCase())
-      .join(''),
-    domain: data.email.split('@')[1],
-  }))
+export const ValidatedUserSchema = UserWithMeta.transform((data) => ({
+  ...data,
+  initials: data.name
+    .split(' ')
+    .map((n) => n[0].toUpperCase())
+    .join(''),
+  domain: data.email.split('@')[1],
+}))
   .refine((data) => data.name.length >= 3, {
     message: 'Name must be at least 3 characters long',
     path: ['name'],

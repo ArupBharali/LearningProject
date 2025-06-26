@@ -14,17 +14,14 @@ export function UserForm() {
     mutate({
       name: form.name,
       email: form.email,
-      role: form.role
+      role: form.role,
     });
   };
 
   return (
     <section>
       <h2 className="text-xl font-semibold mb-4">🧑‍💼 Create User</h2>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <InputField
           type="text"
           placeholder="Name"
@@ -41,9 +38,7 @@ export function UserForm() {
           type="text"
           placeholder="Role"
           value={form.role}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, role: e.target.value }))
-          }
+          onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
         />
         <Button type="submit" isLoading={isPending}>
           Create User
@@ -56,9 +51,7 @@ export function UserForm() {
         </p>
       )}
       {data && (
-        <p className="mt-2 text-sm text-green-600">
-          ✅ Created: {data.name}
-        </p>
+        <p className="mt-2 text-sm text-green-600">✅ Created: {data.name}</p>
       )}
     </section>
   );

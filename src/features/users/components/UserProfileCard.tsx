@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import Image from "next/image";
-import { useUserById } from "../hooks/useUserById";
+import Image from 'next/image';
+import { useUserById } from '../hooks/useUserById';
 
 interface UserProfileCardProps {
   name: string;
@@ -10,8 +10,7 @@ interface UserProfileCardProps {
   role: string;
 }
 
-export function UserProfileCard({id}: {id: string}) {
-
+export function UserProfileCard({ id }: { id: string }) {
   const { data: user, isLoading, isError } = useUserById(id);
 
   if (isLoading) return <p className="text-gray-500">Loading user...</p>;
@@ -21,7 +20,7 @@ export function UserProfileCard({id}: {id: string}) {
     <section className="flex items-center gap-5 rounded-lg bg-white shadow-sm p-4 sm:p-6 border border-gray-200">
       <div className="relative w-16 h-16 sm:w-20 sm:h-20">
         <Image
-          src={user?.avatarUrl || "/default-avatar.png"}
+          src={user?.avatarUrl || '/default-avatar.png'}
           alt={`${user?.name}'s avatar`}
           fill
           className="rounded-full object-cover border border-gray-300"

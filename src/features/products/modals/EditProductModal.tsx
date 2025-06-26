@@ -7,7 +7,7 @@ import { Button } from '@/shared/components/ui/Button';
 
 export function EditProductModal({
   product,
-  onClose
+  onClose,
 }: {
   product: any;
   onClose: () => void;
@@ -15,7 +15,7 @@ export function EditProductModal({
   const [form, setForm] = useState({
     title: product.title,
     price: product.price.toString(),
-    inventory: product.inventory.toString()
+    inventory: product.inventory.toString(),
   });
   const { mutate, isPending } = useUpdateProduct();
 
@@ -25,8 +25,8 @@ export function EditProductModal({
       updates: {
         title: form.title,
         price: parseFloat(form.price),
-        inventory: parseInt(form.inventory)
-      }
+        inventory: parseInt(form.inventory),
+      },
     });
     onClose();
   };
@@ -39,17 +39,13 @@ export function EditProductModal({
           type="text"
           placeholder="Title"
           value={form.title}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, title: e.target.value }))
-          }
+          onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
         />
         <InputField
           type="number"
           placeholder="Price"
           value={form.price}
-          onChange={(e) =>
-            setForm((f) => ({ ...f, price: e.target.value }))
-          }
+          onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
         />
         <InputField
           type="number"

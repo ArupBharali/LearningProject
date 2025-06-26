@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/shared/components/ui/Button";
-import { EditUserModal } from "@/features/users/modals/EditUserModal";
-import { ConfirmDeleteModal } from "@/features/users/modals/ConfirmDeleteModal";
-import Link from "next/link";
+import { useState } from 'react';
+import { Button } from '@/shared/components/ui/Button';
+import { EditUserModal } from '@/features/users/modals/EditUserModal';
+import { ConfirmDeleteModal } from '@/features/users/modals/ConfirmDeleteModal';
+import Link from 'next/link';
 
 export function EditableUserRow({
   user,
@@ -24,22 +24,23 @@ export function EditableUserRow({
       >
         <strong>
           {serial} - {user.name}
-        </strong>{" "}
+        </strong>{' '}
         — {user.email} (Role: {user.role})
       </Link>
       <div className="flex gap-2">
-        <Button 
-        size="sm" 
-        onClick={() => setEditOpen(true)}
-        variant="primary"
-        outline
-        >Edit
+        <Button
+          size="sm"
+          onClick={() => setEditOpen(true)}
+          variant="primary"
+          outline
+        >
+          Edit
         </Button>
-        <Button 
-        size="sm" 
-        variant="danger" 
-        outline
-        onClick={() => setDeleteOpen(true)}
+        <Button
+          size="sm"
+          variant="danger"
+          outline
+          onClick={() => setDeleteOpen(true)}
         >
           Delete
         </Button>

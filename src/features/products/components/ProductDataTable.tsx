@@ -33,10 +33,10 @@ export const productColumns: ColumnDef<Product>[] = [
     size: 120,
     enableColumnFilter: true,
     filterFn: (row, columnId, filterValue) => {
-        const val = row.getValue<number>(columnId);
-        const input = Number(filterValue);
-        return !isNaN(input) && val.toString().includes(input.toString());
-    }
+      const val = row.getValue<number>(columnId);
+      const input = Number(filterValue);
+      return !isNaN(input) && val.toString().includes(input.toString());
+    },
   },
   {
     accessorKey: 'discountPercentage',

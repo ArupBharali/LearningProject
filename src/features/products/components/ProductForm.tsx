@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useCreateProduct } from "@/features/products/hooks/useCreateProductQuery";
-import { InputField } from "@/shared/components/ui/InputField";
-import { Button } from "@/shared/components/ui/Button";
-import FileUploader from "@/shared/components/FileUploader";
+import { useState } from 'react';
+import { useCreateProduct } from '@/features/products/hooks/useCreateProductQuery';
+import { InputField } from '@/shared/components/ui/InputField';
+import { Button } from '@/shared/components/ui/Button';
+import FileUploader from '@/shared/components/FileUploader';
 
 export function ProductForm() {
   const { mutate, isPending, isError, error, data } = useCreateProduct();
-  const [form, setForm] = useState({ title: "", price: "", inventory: "" });
+  const [form, setForm] = useState({ title: '', price: '', inventory: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export function ProductForm() {
       title: form.title,
       price: parseFloat(form.price),
       inventory: parseInt(form.inventory),
-      tags: ["demo"],
+      tags: ['demo'],
     });
   };
 

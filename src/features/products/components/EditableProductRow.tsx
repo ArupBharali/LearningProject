@@ -6,7 +6,13 @@ import { EditProductModal } from '@/features/products/modals/EditProductModal';
 import { ConfirmDeleteModal } from '@/features/products/modals/ConfirmDeleteModal';
 import Link from 'next/link';
 
-export function EditableProductRow({ product, serial }: { product: any, serial: number }) {
+export function EditableProductRow({
+  product,
+  serial,
+}: {
+  product: any;
+  serial: number;
+}) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
@@ -17,27 +23,29 @@ export function EditableProductRow({ product, serial }: { product: any, serial: 
         className="cursor-pointer text-gray-800 hover:text-blue-600 transition-colors"
       >
         <strong>
-          <span className="font-semibold">{serial} - {product.title}</span>{' '}
-        </strong>{" "}
+          <span className="font-semibold">
+            {serial} - {product.title}
+          </span>{' '}
+        </strong>{' '}
         <span className="text-gray-600">
           — ₹{product.price.toFixed(2)} (Qty: {product.inventory})
         </span>
       </Link>
 
       <div className="flex gap-2">
-        <Button 
-        size="sm" 
-        onClick={() => setEditOpen(true)}
-        variant='primary'
-        outline
+        <Button
+          size="sm"
+          onClick={() => setEditOpen(true)}
+          variant="primary"
+          outline
         >
           Edit
         </Button>
-        <Button 
-        size="sm" 
-        variant="danger" 
-        outline
-        onClick={() => setDeleteOpen(true)}
+        <Button
+          size="sm"
+          variant="danger"
+          outline
+          onClick={() => setDeleteOpen(true)}
         >
           Delete
         </Button>

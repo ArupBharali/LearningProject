@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteProduct } from "@/features/products/api";
+import { deleteProduct } from '@/features/products/api';
 
 export function useDeleteProduct() {
   const queryClient = useQueryClient();
@@ -11,6 +11,6 @@ export function useDeleteProduct() {
     },
     onError: (err) => {
       console.error('❌ Delete failed:', err);
-    }
+    },
   });
 }

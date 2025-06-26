@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 
 export function ConfirmDeleteModal({
   id,
-  onClose
+  onClose,
 }: {
   id: string;
   onClose: () => void;
@@ -21,7 +21,7 @@ export function ConfirmDeleteModal({
       },
       onError: () => {
         toast.error('Something went wrong while deleting.');
-      }
+      },
     });
   };
 

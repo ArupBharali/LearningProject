@@ -5,7 +5,7 @@ export const NotificationSchema = z.object({
   message: z.string(),
   read: z.boolean(),
   createdAt: z.string().optional(),
-  priority: z.enum(['low', 'medium', 'high']).optional()
+  priority: z.enum(['low', 'medium', 'high']).optional(),
 });
 
 export const NotificationArraySchema = z.array(NotificationSchema);

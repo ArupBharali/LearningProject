@@ -6,13 +6,24 @@ interface UserMetaProps {
   isActive: boolean;
 }
 
-export function UserMeta({ id, createdAt, updatedAt, isActive }: UserMetaProps) {
+export function UserMeta({
+  id,
+  createdAt,
+  updatedAt,
+  isActive,
+}: UserMetaProps) {
   return (
     <section className="space-y-2">
-      <MetaItem label="Account Status" value={isActive ? 'Active' : 'Inactive'} />
+      <MetaItem
+        label="Account Status"
+        value={isActive ? 'Active' : 'Inactive'}
+      />
       <MetaItem label="User ID" value={id} />
       <MetaItem label="Created" value={new Date(createdAt).toLocaleString()} />
-      <MetaItem label="Last Updated" value={new Date(updatedAt).toLocaleString()} />
+      <MetaItem
+        label="Last Updated"
+        value={new Date(updatedAt).toLocaleString()}
+      />
     </section>
   );
 }
