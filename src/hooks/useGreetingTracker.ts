@@ -6,9 +6,9 @@ export function useGreetingTracker(name: string) {
 
   useEffect(() => {
     setGreeting(`Hello, ${name}!`);
-    setCounts(prev => ({
+    setCounts((prev) => ({
       ...prev,
-      [name]: (prev[name] || 0) + 1
+      [name]: (prev[name] || 0) + 1,
     }));
   }, [name]);
 
