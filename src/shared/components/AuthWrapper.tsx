@@ -12,9 +12,14 @@ interface AuthWrapperProps {
   children: React.ReactNode;
 }
 
-export default function AuthWrapper({ allowedRoles, children }: AuthWrapperProps) {
+export default function AuthWrapper({
+  allowedRoles,
+  children,
+}: AuthWrapperProps) {
   const router = useRouter();
-  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.auth
+  );
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {

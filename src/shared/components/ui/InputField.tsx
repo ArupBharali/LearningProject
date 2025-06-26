@@ -8,7 +8,12 @@ type InputFieldProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function InputField({ type, placeholder, value, onChange }: InputFieldProps) {
+export function InputField({
+  type,
+  placeholder,
+  value,
+  onChange,
+}: InputFieldProps) {
   return (
     <input
       type={type}

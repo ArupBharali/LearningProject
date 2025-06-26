@@ -11,7 +11,7 @@ type DebouncedInputProps<T> = {
   onDebounceTransform?: (raw: string) => string;
 };
 
-export function DebouncedInput<T>({ 
+export function DebouncedInput<T>({
   column,
   value,
   onChange,
@@ -20,22 +20,22 @@ export function DebouncedInput<T>({
   onDebounceTransform,
 }: DebouncedInputProps<T>) {
   const [inputValue, setInputValue] = useState(
-    value ?? (column?.getFilterValue() ?? '') as string ?? ''
+    value ?? ((column?.getFilterValue() ?? '') as string) ?? ''
   );
 
   const debouncedValue = useDebouncedValue(inputValue, debounceMs);
 
   useEffect(() => {
-    const cleaned = onDebounceTransform 
-    ? onDebounceTransform(debouncedValue)
-    : debouncedValue;
+    const cleaned = onDebounceTransform
+      ? onDebounceTransform(debouncedValue)
+      : debouncedValue;
 
     const prevValue = column?.getFilterValue() ?? '';
 
     if (column && cleaned !== prevValue) column.setFilterValue(cleaned);
-    else if (!column && onChange){
+    else if (!column && onChange) {
       onChange?.(cleaned);
-    } 
+    }
   }, [debouncedValue, column, onChange, onDebounceTransform]);
 
   return (

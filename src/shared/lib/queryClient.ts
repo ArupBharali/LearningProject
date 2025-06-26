@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { QueryClient, QueryCache, MutationCache } from "@tanstack/react-query";
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
+import { QueryClient, QueryCache, MutationCache } from '@tanstack/react-query';
+import { persistQueryClient } from '@tanstack/react-query-persist-client';
 import {
   createSyncStoragePersister,
   Persister,
-} from "@tanstack/query-sync-storage-persister";
-import { encrypt, decrypt } from "./utils/crypto"; // adjusted path as needed
+} from '@tanstack/query-sync-storage-persister';
+import { encrypt, decrypt } from './utils/crypto'; // adjusted path as needed
 
 let client: QueryClient | null = null;
 
@@ -29,12 +29,12 @@ export const getQueryClient = (() => {
           onError: (error: unknown, query) => {
             const message =
               error instanceof Error ? error.message : JSON.stringify(error);
-            console.error("❌ Query Error:", message, query);
+            console.error('❌ Query Error:', message, query);
           },
         }),
         mutationCache: new MutationCache({
           onError: (error, variables, context, mutation) => {
-            console.error("❌ Mutation Error:", {
+            console.error('❌ Mutation Error:', {
               error,
               variables,
               context,
@@ -51,15 +51,15 @@ export const getQueryClient = (() => {
       //   error: console.error
       // });
 
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         const encryptedLocalStorage: Storage = {
           getItem: (key) => {
             const raw = localStorage.getItem(key);
             if (!raw) return null;
-            let decrypted = "";
+            let decrypted = '';
             decrypt(raw)
               .then((res) => (decrypted = res))
-              .catch(() => (decrypted = ""));
+              .catch(() => (decrypted = ''));
             return decrypted;
           },
           setItem: (key, value) => {

@@ -7,7 +7,11 @@ interface PaginationProps {
   onPageChange: (newPage: number) => void;
 }
 
-export function Pagination({ page, totalPages, onPageChange }: PaginationProps) {
+export function Pagination({
+  page,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
   return (
     <div className="flex justify-center items-center gap-4 my-4">
       <button

@@ -22,10 +22,11 @@ const notificationSlice = createSlice({
       state.queue.push(action.payload);
     },
     removeNotification: (state, action: PayloadAction<string>) => {
-      state.queue = state.queue.filter(n => n.id !== action.payload);
+      state.queue = state.queue.filter((n) => n.id !== action.payload);
     },
   },
 });
 
-export const { addNotification, removeNotification } = notificationSlice.actions;
+export const { addNotification, removeNotification } =
+  notificationSlice.actions;
 export default notificationSlice.reducer;

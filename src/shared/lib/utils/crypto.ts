@@ -5,14 +5,16 @@ const SALT = new TextEncoder().encode('react-query-persistence-salt');
 
 function getKey(): Promise<CryptoKey> {
   return window.crypto.subtle
-    .importKey('raw', new TextEncoder().encode(SECRET), 'PBKDF2', false, ['deriveKey'])
-    .then(baseKey =>
+    .importKey('raw', new TextEncoder().encode(SECRET), 'PBKDF2', false, [
+      'deriveKey',
+    ])
+    .then((baseKey) =>
       window.crypto.subtle.deriveKey(
         {
           name: 'PBKDF2',
           salt: SALT,
           iterations: 100_000,
-          hash: 'SHA-256'
+          hash: 'SHA-256',
         },
         baseKey,
         { name: 'AES-GCM', length: 256 },
@@ -41,7 +43,7 @@ export async function encrypt(value: string): Promise<string> {
 }
 
 export async function decrypt(value: string): Promise<string> {
-  const data = Uint8Array.from(atob(value), c => c.charCodeAt(0));
+  const data = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
   const iv = data.slice(0, 12);
   const cipher = data.slice(12);
 

@@ -1,21 +1,20 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./ThemeToggle";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/shared/store";
-import { logout } from "@/shared/store/slices/authSlice";
-import Image from "next/image";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ThemeToggle } from './ThemeToggle';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/shared/store';
+import { logout } from '@/shared/store/slices/authSlice';
+import Image from 'next/image';
 
 const links = [
-  { href: "/react-concepts", label: "Interview Questions" },
-  { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/users", label: "Users" },
-  { href: "/cart", label: "Cart" },
-  { href: "/admin", label: "Admin" },
-  { href: "/employees-grid", label: "Update Employee Data" },
+  { href: '/', label: 'Home' },
+  { href: '/react-concepts', label: 'Interview Questions' },
+  { href: '/products', label: 'Products' },
+  { href: '/users', label: 'Users' },
+  { href: '/cart', label: 'Cart' },
+  { href: '/admin', label: 'Admin' },
 ];
 
 export default function Navbar() {
@@ -46,8 +45,8 @@ export default function Navbar() {
                   href={href}
                   className={`${
                     isActive
-                      ? "text-blue-600 dark:text-blue-400 font-semibold"
-                      : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                      ? 'text-blue-600 dark:text-blue-400 font-semibold'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
                   } transition-colors duration-200`}
                 >
                   {label}

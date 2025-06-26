@@ -19,8 +19,8 @@ type DataTableProps<TData> = {
   data: TData[];
   columns: ColumnDef<TData, any>[];
   page: number;
-  filters: Record<string,string>;
-  setFilters: React.Dispatch<React.SetStateAction<Record<string,string>>>;
+  filters: Record<string, string>;
+  setFilters: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 };
 
 export function DataTable<TData>({
@@ -45,10 +45,13 @@ export function DataTable<TData>({
         typeof updater === 'function' ? updater(columnFilters) : updater;
       setColumnFilters(updated);
 
-      const mapped = updated.reduce((acc, cur) => {
-        acc[cur.id] = cur.value as string;
-        return acc;
-      }, {} as Record<string, string>);
+      const mapped = updated.reduce(
+        (acc, cur) => {
+          acc[cur.id] = cur.value as string;
+          return acc;
+        },
+        {} as Record<string, string>
+      );
 
       setFilters(mapped);
     },
@@ -84,7 +87,7 @@ export function DataTable<TData>({
                   key={header.id}
                   style={{ width: header.getSize() }} // ← this line
                   onClick={header.column.getToggleSortingHandler()}
-                  className="px-4 py-2 text-left text-sm font-semibold cursor-pointer select-none sticky top-0 z-10 tracker-wider border-b border-gray-200 dark:border-gray-700 backdrop-blur-md bg-opacity-90" 
+                  className="px-4 py-2 text-left text-sm font-semibold cursor-pointer select-none sticky top-0 z-10 tracker-wider border-b border-gray-200 dark:border-gray-700 backdrop-blur-md bg-opacity-90"
                 >
                   <div>
                     {flexRender(
@@ -96,10 +99,10 @@ export function DataTable<TData>({
                   </div>
 
                   {header.column.getCanFilter() && (
-                    <DebouncedInput 
-                    column={header.column} 
-                    placeholder={"Search..."} 
-                    onDebounceTransform={getInputSanitizer(header.column.id)}
+                    <DebouncedInput
+                      column={header.column}
+                      placeholder={'Search...'}
+                      onDebounceTransform={getInputSanitizer(header.column.id)}
                     />
                   )}
                 </th>

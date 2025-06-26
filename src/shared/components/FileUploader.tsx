@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Button } from "./ui/Button";
+import { useState } from 'react';
+import { Button } from './ui/Button';
 
 export default function FileUploader() {
   const [file, setFile] = useState<File | null>(null);
@@ -10,9 +10,9 @@ export default function FileUploader() {
 
     setIsUploading(true);
     const formData = new FormData();
-    formData.append("file", file);
-    await fetch("/api/upload", {
-      method: "POST",
+    formData.append('file', file);
+    await fetch('/api/upload', {
+      method: 'POST',
       body: formData,
     });
     setIsUploading(false);
@@ -45,10 +45,10 @@ export default function FileUploader() {
         type="button"
         disabled={!file || isUploading}
         className={`px-4 py-2 rounded-md text-white ${
-          isUploading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+          isUploading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
         }`}
       >
-        {isUploading ? "Uploading..." : "Upload"}
+        {isUploading ? 'Uploading...' : 'Upload'}
       </Button>
     </div>
   );

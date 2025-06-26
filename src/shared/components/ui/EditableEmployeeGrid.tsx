@@ -14,15 +14,17 @@ export function EditableEmployeeGrid() {
 
   useEffect(() => {
     fetch('/api/employees/relations')
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setRelations);
   }, []);
 
   const updateRow = (id: string, updates: Partial<NewGridRow>) => {
-    setRows(prev => prev.map(r => (r.id === id ? { ...r, ...updates } : r)));
+    setRows((prev) =>
+      prev.map((r) => (r.id === id ? { ...r, ...updates } : r))
+    );
   };
 
-  const addRow = () => setRows(prev => [...prev, { id: uuid() }]);
+  const addRow = () => setRows((prev) => [...prev, { id: uuid() }]);
 
   const saveRows = async () => {
     const res = await fetch('/api/employees/bulkUpdate', {
@@ -34,11 +36,11 @@ export function EditableEmployeeGrid() {
   };
 
   return (
-    <div>
+    <div className='overflow-x-auto'>
       <table className="min-w-full border text-sm">
         <thead>
           <tr className="bg-gray-200">
-            <th>Employee</th>
+            <th className='w-48'>Employee</th>
             <th>LOS</th>
             <th>SBU</th>
             <th>SubSBU</th>
@@ -49,31 +51,30 @@ export function EditableEmployeeGrid() {
           </tr>
         </thead>
         <tbody>
-          {rows.map(row => (
+          {rows.map((row) => (
             <tr key={row.id} className="border-t">
               <td>
                 <EmployeeSearchInput
                   value={row.employee}
                   onSelect={(emp) => {
-  // First update parent values
-  updateRow(row.id, {
-    employee: emp,
-    los: emp.los,
-    sbu: emp.sbu,
-    phone: emp.phone,
-    joiningDate: emp.joiningDate,
-    comment: emp.comment,
-  });
+                    // First update parent values
+                    updateRow(row.id, {
+                      employee: emp,
+                      los: emp.los,
+                      sbu: emp.sbu,
+                      phone: emp.phone,
+                      joiningDate: emp.joiningDate,
+                      comment: emp.comment,
+                    });
 
-  // Then defer subSbu + competency until parent renders settle
-  setTimeout(() => {
-    updateRow(row.id, {
-      subSbu: emp.subSbu,
-      competency: emp.competency,
-    });
-  }, 0);
-}}
-
+                    // Then defer subSbu + competency until parent renders settle
+                    setTimeout(() => {
+                      updateRow(row.id, {
+                        subSbu: emp.subSbu,
+                        competency: emp.competency,
+                      });
+                    }, 0);
+                  }}
                 />
               </td>
               <td colSpan={4}>
@@ -88,14 +89,16 @@ export function EditableEmployeeGrid() {
               <td>
                 <input
                   value={row.phone ?? ''}
-                  onChange={e => updateRow(row.id, { phone: e.target.value })}
+                  onChange={(e) => updateRow(row.id, { phone: e.target.value })}
                   className="w-32 px-1 py-0.5 border"
                 />
               </td>
               <td>
                 <DatePicker
                   selected={row.joiningDate ? new Date(row.joiningDate) : null}
-                  onChange={date => updateRow(row.id, { joiningDate: date?.toISOString() })}
+                  onChange={(date) =>
+                    updateRow(row.id, { joiningDate: date?.toISOString() })
+                  }
                   dateFormat="yyyy-MM-dd"
                   className="w-32 px-1 py-0.5 border"
                 />
@@ -103,7 +106,9 @@ export function EditableEmployeeGrid() {
               <td>
                 <input
                   value={row.comment ?? ''}
-                  onChange={e => updateRow(row.id, { comment: e.target.value })}
+                  onChange={(e) =>
+                    updateRow(row.id, { comment: e.target.value })
+                  }
                   className="w-48 px-1 py-0.5 border"
                 />
               </td>
@@ -113,8 +118,18 @@ export function EditableEmployeeGrid() {
       </table>
 
       <div className="mt-4 flex gap-2">
-        <button onClick={addRow} className="px-3 py-1 bg-blue-600 text-white rounded">Add Row</button>
-        <button onClick={saveRows} className="px-3 py-1 bg-green-600 text-white rounded">Save All</button>
+        <button
+          onClick={addRow}
+          className="px-3 py-1 bg-blue-600 text-white rounded"
+        >
+          Add Row
+        </button>
+        <button
+          onClick={saveRows}
+          className="px-3 py-1 bg-green-600 text-white rounded"
+        >
+          Save All
+        </button>
       </div>
     </div>
   );

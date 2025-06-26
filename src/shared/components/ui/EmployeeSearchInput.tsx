@@ -28,7 +28,9 @@ export function EmployeeSearchInput({ value, onSelect }: Props) {
 
   const fetchEmployees = debounce(async (q: string) => {
     if (!q) return setResults([]);
-    const res = await fetch(`/api/employees/search?query=${encodeURIComponent(q)}`);
+    const res = await fetch(
+      `/api/employees/search?query=${encodeURIComponent(q)}`
+    );
     const data = await res.json();
     setResults(data);
     setShowDropdown(true);
@@ -56,13 +58,17 @@ export function EmployeeSearchInput({ value, onSelect }: Props) {
       />
       {showDropdown && results.length > 0 && (
         <ul className="absolute z-50 bg-white border border-gray-300 rounded shadow mt-1 w-full max-h-40 overflow-y-auto">
-          {results.map(emp => (
+          {results.map((emp) => (
             <li
               key={emp.id}
               onClick={() => handleSelect(emp)}
               className="px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm flex items-center gap-2"
             >
-              <img src={emp.photoUrl} alt={emp.name} className="w-6 h-6 rounded-full" />
+              <img
+                src={emp.photoUrl}
+                alt={emp.name}
+                className="w-6 h-6 rounded-full"
+              />
               {emp.name}
             </li>
           ))}
