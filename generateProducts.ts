@@ -28,10 +28,7 @@ const products = Array.from({ length: NUM_PRODUCTS }, () => {
     isActive: faker.datatype.boolean(),
     featured: faker.datatype.boolean(),
     rating: faker.number.float({ min: 0, max: 5, precision: 0.1 }),
-    images: [
-      faker.image.urlPicsumPhotos(),
-      faker.image.urlPicsumPhotos(),
-    ],
+    images: [faker.image.urlPicsumPhotos(), faker.image.urlPicsumPhotos()],
     createdBy: faker.person.fullName(),
     createdAt: faker.date.past().toISOString(),
     updatedAt: faker.date.recent().toISOString(),

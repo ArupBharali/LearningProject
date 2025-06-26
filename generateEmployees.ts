@@ -3,22 +3,36 @@ import fs from 'fs';
 import path from 'path';
 import { nanoid } from 'nanoid';
 
-const NUM_EMPLOYEES = 50000;
+const NUM_EMPLOYEES = 10000;
 
 const LOS = ['Consulting', 'Technology', 'Operations'];
 const SBU = ['Digital', 'Analytics', 'Cybersecurity', 'Cloud'];
 const SUBSBU = ['Strategy', 'Delivery', 'Support'];
 const COMPETENCIES = ['Frontend', 'Backend', 'DevOps', 'Data Science', 'QA'];
-const DEPARTMENTS = ['HR', 'Finance', 'Engineering', 'Marketing', 'Legal', 'Product'];
-const LOCATIONS = ['Mumbai', 'Bangalore', 'Hyderabad', 'Pune', 'Gurgaon', 'Chennai'];
+const DEPARTMENTS = [
+  'HR',
+  'Finance',
+  'Engineering',
+  'Marketing',
+  'Legal',
+  'Product',
+];
+const LOCATIONS = [
+  'Mumbai',
+  'Bangalore',
+  'Hyderabad',
+  'Pune',
+  'Gurgaon',
+  'Chennai',
+];
 const STATUS_OPTIONS = ['active', 'on leave', 'resigned'];
 
 const relations = {
-  los: LOS.map(los => ({
+  los: LOS.map((los) => ({
     name: los,
-    sbu: SBU.map(sbu => ({
+    sbu: SBU.map((sbu) => ({
       name: `${los}-${sbu}`,
-      subSbu: SUBSBU.map(sub => ({
+      subSbu: SUBSBU.map((sub) => ({
         name: `${los}-${sbu}-${sub}`,
         competency: faker.helpers.arrayElements(COMPETENCIES, 2),
       })),
