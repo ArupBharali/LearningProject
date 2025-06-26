@@ -13,6 +13,7 @@ import {
 import React, { useState, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { DebouncedInput } from './DebouncedInput';
+import { getInputSanitizer } from '@/shared/lib/utils/getInputSanitizer';
 
 type DataTableProps<TData> = {
   data: TData[];
@@ -95,7 +96,11 @@ export function DataTable<TData>({
                   </div>
 
                   {header.column.getCanFilter() && (
-                    <DebouncedInput column={header.column} />
+                    <DebouncedInput 
+                    column={header.column} 
+                    placeholder={"Search..."} 
+                    onDebounceTransform={getInputSanitizer(header.column.id)}
+                    />
                   )}
                 </th>
               ))}

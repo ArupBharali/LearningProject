@@ -14,6 +14,8 @@ const links = [
   { href: "/products", label: "Products" },
   { href: "/users", label: "Users" },
   { href: "/cart", label: "Cart" },
+  { href: "/admin", label: "Admin" },
+  { href: "/employees-grid", label: "Update Employee Data" },
 ];
 
 export default function Navbar() {
