@@ -9,8 +9,8 @@ import { Container } from 'postcss';
 
 export const metadata: Metadata = {
   title: 'Cart India',
-  description: 'All concepts clubbed together here'
-}
+  description: 'All concepts clubbed together here',
+};
 
 export default function RootLayout({
   children,
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body 
+      <body
       // className={inter.className}
       >
         {/* <Container> */}

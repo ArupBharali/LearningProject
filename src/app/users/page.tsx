@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useTransition, useState, useEffect } from "react";
-import { UserList } from "@/features/users/components/UserList";
-import { Button } from "@/shared/components/ui/Button";
-import { CreateUserModal } from "@/features/users/modals/CreateUserModal";
-import { Spinner } from "@/shared/components/ui/Spinner";
+import { useTransition, useState, useEffect } from 'react';
+import { UserList } from '@/features/users/components/UserList';
+import { Button } from '@/shared/components/ui/Button';
+import { CreateUserModal } from '@/features/users/modals/CreateUserModal';
+import { Spinner } from '@/shared/components/ui/Spinner';
 
 export default function Users() {
   const [showList, setShowList] = useState(false);

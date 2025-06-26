@@ -6,7 +6,7 @@ import {
   getFilteredProducts,
 } from '@/lib/data/productsData';
 import { nanoid } from 'nanoid';
-import {buildProductsFilterFromQuery} from '@/shared/lib/utils/buildProductsFilterFromQuery';
+import { buildProductsFilterFromQuery } from '@/shared/lib/utils/buildProductsFilterFromQuery';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -14,9 +14,9 @@ export async function GET(req: NextRequest) {
   const pageSize = parseInt(searchParams.get('pageSize') || '20');
   const skip = (page - 1) * pageSize;
 
-    const where = buildProductsFilterFromQuery(searchParams);
+  const where = buildProductsFilterFromQuery(searchParams);
 
-  console.log('arup1', req.url,page,pageSize, skip)
+  console.log('arup1', req.url, page, pageSize, skip);
 
   // 🔀 If no filters provided, return all products (paginated)
   if (Object.keys(where).length === 0) {

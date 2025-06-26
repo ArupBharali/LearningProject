@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     priceInCents: Math.round(body.price * 100),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    updatedBy: 'admin'
+    updatedBy: 'admin',
   };
   addUser(newProduct);
   return NextResponse.json(newProduct, { status: 201 });

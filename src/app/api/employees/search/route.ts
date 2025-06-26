@@ -9,8 +9,8 @@ export async function GET(req: NextRequest) {
 
   await initDB();
 
-  const matches = db.data!.employees
-    .filter(emp => emp.name.toLowerCase().includes(query))
+  const matches = db
+    .data!.employees.filter((emp) => emp.name.toLowerCase().includes(query))
     .slice(0, 10); // limit suggestions
 
   return NextResponse.json(matches);

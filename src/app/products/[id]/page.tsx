@@ -11,22 +11,21 @@ export default async function ProductDetailPage({
 }: {
   params: { id: string };
 }) {
-    // console.log('UserDetailPage params', await params.id);
+  // console.log('UserDetailPage params', await params.id);
   const data = await fetchUserById(params.id)
-  .then((res)=> {
-    console.log('UserDetailPage res', res);
-    return res;
-  })
-  .catch((err) => console.error('fetchUserById error',err));
-  
-  
+    .then((res) => {
+      console.log('UserDetailPage res', res);
+      return res;
+    })
+    .catch((err) => console.error('fetchUserById error', err));
+
   if (!data) return notFound();
 
   const user = parseUser(data);
 
   return (
     <main className="max-w-3xl mx-auto p-8">
-      <UserProfileCard id={user.id}/>
+      <UserProfileCard id={user.id} />
       <UserMeta
         id={user.id}
         createdAt={user.createdAt}

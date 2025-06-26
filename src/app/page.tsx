@@ -17,7 +17,8 @@ export default function HomePage() {
           Welcome to <span className="text-blue-600">Cart India</span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-          Your platform for <span className="font-semibold text-gray-800">smart shopping</span>,
+          Your platform for{' '}
+          <span className="font-semibold text-gray-800">smart shopping</span>,
           seamless inventory, and joyful discovery.
         </p>
       </div>

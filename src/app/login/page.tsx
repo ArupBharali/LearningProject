@@ -6,10 +6,13 @@ import { useRouter } from 'next/navigation';
 import { loginSchema, LoginSchemaType } from '@/features/login/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-
 export default function LoginPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginSchemaType>({
-    resolver: zodResolver(loginSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginSchemaType>({
+    resolver: zodResolver(loginSchema),
   });
   const { mutate, isPending, error } = useLogin();
   const router = useRouter();
@@ -31,7 +34,9 @@ export default function LoginPage() {
             className="w-full p-2 border rounded"
             placeholder="Email"
           />
-          {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-sm text-red-600">{errors.email.message}</p>
+          )}
         </div>
 
         <div>
@@ -41,10 +46,14 @@ export default function LoginPage() {
             className="w-full p-2 border rounded"
             placeholder="Password"
           />
-          {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-sm text-red-600">{errors.password.message}</p>
+          )}
         </div>
 
-        {error && <p className="text-sm text-red-600">{error.message as string}</p>}
+        {error && (
+          <p className="text-sm text-red-600">{error.message as string}</p>
+        )}
 
         <button
           type="submit"

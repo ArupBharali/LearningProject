@@ -12,31 +12,30 @@ export default async function UserDetailPage({
 }: {
   params: { id: string };
 }) {
-    // console.log('UserDetailPage params', await params.id);
+  // console.log('UserDetailPage params', await params.id);
   const data = await fetchUserById(params.id)
-  .then((res)=> {
-    console.log('UserDetailPage res', res);
-    return res;
-  })
-  .catch((err) => console.error('fetchUserById error',err));
-  
-  
+    .then((res) => {
+      console.log('UserDetailPage res', res);
+      return res;
+    })
+    .catch((err) => console.error('fetchUserById error', err));
+
   if (!data) return notFound();
 
   const user = parseUser(data);
 
   return (
     <AuthWrapper allowedRoles={['admin']}>
-    <main className="max-w-3xl mx-auto p-8">
-      <UserProfileCard id={user.id}/>
-      <UserMeta
-        id={user.id}
-        createdAt={user.createdAt}
-        updatedAt={user.updatedAt}
-        isActive={user.isActive}
-      />
-      <UserActions />
-    </main>
+      <main className="max-w-3xl mx-auto p-8">
+        <UserProfileCard id={user.id} />
+        <UserMeta
+          id={user.id}
+          createdAt={user.createdAt}
+          updatedAt={user.updatedAt}
+          isActive={user.isActive}
+        />
+        <UserActions />
+      </main>
     </AuthWrapper>
   );
 }

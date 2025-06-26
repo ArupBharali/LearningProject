@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useTransition, useEffect, useState } from "react";
-import { ProductList } from "@/features/products/components/ProductList";
-import { Button } from "@/shared/components/ui/Button";
-import { CreateProductModal } from "@/features/products/modals/CreateProductModal";
-import { Spinner } from "@/shared/components/ui/Spinner";
-import { SidebarToggle } from "@/shared/components/SidebarToggle";
-import { Sidebar } from "@/features/products/components/Sidebar";
-import ProductDataTable from "@/features/products/components/ProductDataTable";
-import { useProductsQuery } from "@/features/products/hooks/useProductsQuery";
-import { useFilteredProductsQuery } from "@/features/products/hooks/useFilteredProductsQuery";
+import { useTransition, useEffect, useState } from 'react';
+import { ProductList } from '@/features/products/components/ProductList';
+import { Button } from '@/shared/components/ui/Button';
+import { CreateProductModal } from '@/features/products/modals/CreateProductModal';
+import { Spinner } from '@/shared/components/ui/Spinner';
+import { SidebarToggle } from '@/shared/components/SidebarToggle';
+import { Sidebar } from '@/shared/components/ui/Sidebar';
+import ProductDataTable from '@/features/products/components/ProductDataTable';
+import { useProductsQuery } from '@/features/products/hooks/useProductsQuery';
+import { useFilteredProductsQuery } from '@/features/products/hooks/useFilteredProductsQuery';
 
 export default function Products() {
   const [showList, setShowList] = useState(false);
@@ -25,13 +25,20 @@ export default function Products() {
 
   return (
     <div>
-      <Sidebar />
+      <Sidebar
+        title="Product Menu"
+        links={[
+          { label: 'Dashboard', href: '/' },
+          { label: 'Products', href: '/products' },
+          { label: 'Users', href: '/users' },
+          { label: 'React Concepts', href: '/react-concepts' },
+        ]}
+      />
 
       <main className="min-h-screen bg-gray-50 px-6 py-10">
         <div className="max-w-5xl mx-auto space-y-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <SidebarToggle />
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                 🛒 Products List
               </h1>
@@ -40,7 +47,7 @@ export default function Products() {
             <div className="flex gap-2">
               <Button
                 size="sm"
-                onClick={() => setShowProductDataTable(prev => !prev)}
+                onClick={() => setShowProductDataTable((prev) => !prev)}
                 variant="primary"
                 type="button"
               >
@@ -79,4 +86,3 @@ export default function Products() {
     </div>
   );
 }
-

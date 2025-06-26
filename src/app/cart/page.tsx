@@ -1,4 +1,3 @@
-
 import AuthWrapper from '@/shared/components/AuthWrapper';
 
 function Cart1() {

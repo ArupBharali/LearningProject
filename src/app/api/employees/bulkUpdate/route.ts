@@ -10,7 +10,9 @@ export async function POST(req: NextRequest) {
 
   // Update or insert based on ID
   for (const row of updates) {
-    const index = db.data!.employees.findIndex(e => e.id === row.employee?.id);
+    const index = db.data!.employees.findIndex(
+      (e) => e.id === row.employee?.id
+    );
     if (index !== -1) {
       db.data!.employees[index] = { ...db.data!.employees[index], ...row };
     } else if (row.employee) {
