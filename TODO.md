@@ -68,3 +68,7 @@ Inputs are editable.
 Clicking "Save All" sends updated rows to backend.
 
 3.  In the DataTable we have created, when I click on the searchbox, the grid is getting sorted for that column, I want to stop this behaviour for the searchboxes.
+
+implement a complex multi layered form with auto save functionality to create a stock request in a company like PwC
+
+I wanted a create a form to create project details about a project. this will have many forms  in steps and there are total five steps. Imagine this and give me end to end code and this form will have a lot of fields with different types depending on the details of the form, it will have some grids also in some sections, accordions in some other and lots more. Based on selections, it will renders different requirements, so that fields will vary for each selection. It will go through a approval hierarchy  and in the audit log, it will display all activities. I will have auto save feature, dynamic form validation, a preview feature and when the user saves it finally, it will be in open in readable mode not editable. Users with different designations will log into the system and will be able to view the form if it's in his bucket. He will have options to provide additional details and approve or reject it. On rejection will go to the requesters bucket.

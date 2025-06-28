@@ -53,6 +53,7 @@ console.error("Error fetching data:", error);
 }, []); // Runs only once when the component mounts
 
 return (
+
 <div>
 <h2>Fetched Data:</h2>
 {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading...</p>}
@@ -114,6 +115,7 @@ fetchData(); // Initial data load
 }, []);
 
 return (
+
 <div>
 <h2>Fetched Data:</h2>
 {loading ? <p>Loading...</p> : error ? <p className="text-red-500">Error: {error}</p> : <pre>{JSON.stringify(data, null, 2)}</pre>}
@@ -177,6 +179,7 @@ fetchData(); // Initial data load
 }, []);
 
 return (
+
 <div>
 <h2>Fetched Data:</h2>
 {loading ? <p>Loading...</p> : error ? <p className="text-red-500">Error: {error}</p> : <pre>{JSON.stringify(data, null, 2)}</pre>}
@@ -292,6 +295,7 @@ if (isLoading) return <p>Loading...</p>;
 if (error) return <p>Error: {error.message}</p>;
 
 return (
+
 <ul>
 {data.map((post) => (
 <li key={post.id}>{post.title}</li>
@@ -356,6 +360,7 @@ const [page, setPage] = useState(1);
 const { data, isLoading } = useQuery(["posts", page], () => fetchPosts(page), { keepPreviousData: true });
 
 return (
+
 <div>
 {isLoading ? <p>Loading...</p> : data.map((post) => <p key={post.id}>{post.title}</p>)}
 <button onClick={() => setPage((prev) => Math.max(prev - 1, 1))}>Previous</button>
@@ -395,6 +400,7 @@ return lastPage.length ? allPages.length + 1 : undefined;
 });
 
 return (
+
 <div>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -466,6 +472,7 @@ fetchNextPage();
 }, [fetchNextPage, hasNextPage, isFetching]);
 
 return (
+
 <div ref={scrollRef}>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -535,6 +542,7 @@ fetchNextPage();
 }, [fetchNextPage, hasNextPage, isFetching]);
 
 return (
+
 <div ref={scrollRef}>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -617,6 +625,7 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 return (
+
 <div ref={scrollRef}>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -742,6 +751,7 @@ window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 return (
+
 <div ref={scrollRef}>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -890,6 +900,7 @@ cacheTime: 300000, // Cache persists for 5 minutes
 });
 
 return isLoading ? (
+
 <p>Loading...</p>
 ) : (
 <FixedSizeList height={400} width={300} itemSize={50} itemCount={data.length}>
@@ -1001,6 +1012,7 @@ fetchData();
 }, []);
 
 return (
+
 <div>
 <h2>Fetched Data:</h2>
 {loading ? <p>Loading...</p> : error ? <p className="text-red-500">Error: {error}</p> : <pre>{JSON.stringify(data, null, 2)}</pre>}
@@ -1074,6 +1086,7 @@ if (!query) return; // Avoid unnecessary API calls
 }, [query]);
 
 return (
+
 <div>
 <input
 type="text"
@@ -1150,6 +1163,7 @@ debouncedFetchData(query);
 }, [query]);
 
 return (
+
 <div>
 <input
 type="text"
@@ -1226,6 +1240,7 @@ throttledFetchData(query);
 }, [query]);
 
 return (
+
 <div>
 <input
 type="text"
@@ -1305,6 +1320,7 @@ throttledFetchData(query);
 }, [query]);
 
 return (
+
 <div>
 <input
 type="text"
@@ -1390,6 +1406,7 @@ if (page > 1) fetchData();
 }, [page]);
 
 return (
+
 <div>
 <input
 type="text"
@@ -1468,6 +1485,7 @@ fetchNextPage();
 }, [fetchNextPage]);
 
 return (
+
 <div>
 {data?.pages.map((page, index) => (
 <div key={index}>
@@ -1753,6 +1771,7 @@ console.log("Effect triggered!");
 }, []);
 
 return (
+
 <div>
 <p>Count: {count}</p>
 <button onClick={() => setCount(count + 1)}>Increment</button>
@@ -2039,9 +2058,11 @@ hljs.highlightAll(); // Highlights all code blocks
 }, []);
 
 return (
+
 <pre>
 <code className={`language-${language}`}>{code}</code>
 </pre>
+
 );
 };
 
@@ -2180,6 +2201,7 @@ product.name.toLowerCase().includes(query.toLowerCase())
 );
 
 return (
+
 <div>
 <input
 type="text"
@@ -2211,6 +2233,7 @@ product.name.toLowerCase().includes(query.toLowerCase())
 );
 
 return (
+
 <div>
 <input
 type="text"
@@ -2263,6 +2286,7 @@ img.onload = () => setImageLoaded(true);
 }, [imageUrl]);
 
 return (
+
 <div>
 {!imageLoaded && <p>Loading image...</p>}
 {imageLoaded && <img src={imageUrl} alt="Post" />}
@@ -2290,6 +2314,7 @@ startTransition(() => setImageLoaded(true));
 }, [imageUrl]);
 
 return (
+
 <div>
 {isPending && <p>Loading image...</p>}
 {imageLoaded && <img src={imageUrl} alt="Post" />}
@@ -2331,6 +2356,7 @@ img.onload = () => setImageLoaded(true);
 }, [imageUrl]);
 
 return (
+
 <div>
 {!imageLoaded && <p>Loading image...</p>}
 {imageLoaded && <img src={imageUrl} alt="Post" />}
@@ -2346,6 +2372,7 @@ const images = [
 ];
 
 return (
+
 <div>
 {images.map((url, index) => (
 <ImageComponent key={index} imageUrl={url} />
@@ -2374,6 +2401,7 @@ startTransition(() => setImageLoaded(true));
 }, [imageUrl]);
 
 return (
+
 <div>
 {isPending && <p>Loading image...</p>}
 {imageLoaded && <img src={imageUrl} alt="Post" />}
@@ -2389,6 +2417,7 @@ const images = [
 ];
 
 return (
+
 <div>
 {images.map((url, index) => (
 <ImageComponent key={index} imageUrl={url} />
@@ -2486,6 +2515,7 @@ return (
 <>
 <button onClick={() => setCount(count + 1)}>Increment</button>
 <Child name="Alice" />
+
 <p>Count: {count}</p>
 </>
 );
@@ -2520,6 +2550,7 @@ return (
 <>
 <button onClick={() => setCount(count + 1)}>Increment</button>
 <Child name="Alice" />
+
 <p>Count: {count}</p>
 </>
 );
@@ -2567,6 +2598,7 @@ onChange={e => setText(e.target.value)}
 placeholder="Type here"
 />
 <button onClick={() => setCount(count + 1)}>Increment</button>
+
 <p>Factorial of {count} is {factorial}</p>
 </>
 );
@@ -2605,6 +2637,7 @@ setCount(c => c + 1);
 return (
 <>
 <Child onClick={increment} />
+
 <p>Count: {count}</p>
 </>
 );
@@ -2709,6 +2742,7 @@ return data.filter(item => item.toLowerCase().includes(query.toLowerCase()));
 return (
 <>
 <input value={query} onChange={e => setQuery(e.target.value)} />
+
 <ul>
 {filtered.map((item, idx) => <li key={idx}>{item}</li>)}
 </ul>
@@ -3017,6 +3051,7 @@ import React from 'react';
 
 const Comment = ({ userInput }) => {
 return (
+
 <div dangerouslySetInnerHTML={{ __html: userInput }} />
 );
 };
@@ -3078,6 +3113,7 @@ const storedComments = [
 
 const Comments = () => {
 return (
+
 <div>
 <h2>Comments</h2>
 {storedComments.map(comment => (
@@ -3111,6 +3147,7 @@ import DOMPurify from 'dompurify';
 
 const Comments = () => {
 return (
+
 <div>
 <h2>Comments</h2>
 {storedComments.map(comment => (
@@ -3164,6 +3201,7 @@ setResult("Error in input");
 };
 
 return (
+
 <div>
 <h2>Search</h2>
 <input value={query} onChange={e => setQuery(e.target.value)} />
@@ -3442,6 +3480,7 @@ import("./components/SalesChart"); // Preload SalesChart for faster rendering
 }, []);
 
 return (
+
 <div>
 <Navbar />
 <Suspense fallback={<p>Loading dashboard...</p>}>
@@ -3567,6 +3606,7 @@ if (ws) ws.send("Hello, Server!");
 };
 
 return (
+
 <div>
 <button onClick={sendMessage}>Send Message</button>
 <ul>
@@ -3662,6 +3702,7 @@ const dispatch = useDispatch();
 const messages = useSelector((state) => state.websocket.messages);
 
 return (
+
 <div>
 <button onClick={() => dispatch(connectWebSocket())}>Connect WebSocket</button>
 <ul>
@@ -3751,6 +3792,7 @@ const dispatch = useDispatch();
 const messages = useSelector((state) => state.websocket.messages);
 
 return (
+
 <div>
 <button onClick={() => dispatch(connectWebSocket())}>Connect WebSocket</button>
 <ul>
@@ -3836,6 +3878,7 @@ const WebSocketComponent = () => {
 const { data: messages } = useGetMessagesQuery();
 
 return (
+
 <div>
 <h2>Real-Time Messages</h2>
 <ul>
@@ -4373,6 +4416,7 @@ router.push(`/${locale}`);
 
 return (
 <select onChange={(e) => changeLanguage(e.target.value)}>
+
 <option value="en">English</option>
 <option value="fr">French</option>
 </select>
@@ -4600,6 +4644,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
 
 return (
 <>
+
 <p>Count: {state.count}</p>
 <button onClick={() => dispatch({ type: "increment" })}>+</button>
 <button onClick={() => dispatch({ type: "decrement" })}>-</button>
@@ -4742,6 +4787,7 @@ const ref = useRef(null);
 useOnClickOutside(ref, () => setIsOpen(false)); // Listens for outside clicks
 
 return (
+
 <div ref={ref} className="dropdown">
 <button onClick={() => setIsOpen(!isOpen)}>Toggle Menu</button>
 {isOpen && <div className="menu">Dropdown Content</div>}
@@ -4807,6 +4853,7 @@ export default function ExampleComponent() {
 const urlSegments = useSelectedLayoutSegments();
 
 return (
+
 <ul>
 {urlSegments.map((segment, index) => (
 <li key={index}>{segment}</li>
@@ -4846,6 +4893,7 @@ export default function Breadcrumb() {
 const segments = useSelectedLayoutSegments();
 
 return (
+
 <nav className="flex gap-2 text-sm">
 <Link href="/" className="text-blue-600 hover:underline">Home</Link>
 {segments.map((segment, index) => {
@@ -4872,6 +4920,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 return (
+
 <div>
 <Breadcrumb />
 {children}
@@ -5287,6 +5336,7 @@ const cart = useSelector(state => state.cart.items);
 const dispatch = useDispatch();
 
 return (
+
 <div>
 <h1>{product.name}</h1>
 <button onClick={() => dispatch(addToCart(product))}>
@@ -6686,6 +6736,7 @@ import { sendEmail } from "./serverActions";
 
 export default function EmailForm() {
 return (
+
 <form action={sendEmail}>
 <input type="text" name="name" placeholder="Your Name" required />
 <input type="email" name="email" placeholder="Your Email" required />
@@ -6730,6 +6781,7 @@ setCount((prev) => prev + 1);
 }
 
 return (
+
 <div>
 <button onClick={handleClick}>Increment</button>
 {isPending ? <p>Updating...</p> : <p>Count: {count}</p>}
