@@ -29,4 +29,11 @@ export type NewGridRow = {
   phone?: string;
   joiningDate?: string;
   comment?: string;
+  allocationLogs?: {
+    timestamp: string;
+    phase: string;
+    allocation: number;
+    status: 'Planned' | 'Confirmed' | 'Rejected';
+    reviewer: string;
+  }[];
 };
