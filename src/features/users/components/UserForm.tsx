@@ -19,7 +19,7 @@ export function UserForm() {
   };
 
   return (
-    <section>
+    <section className="transition-colors duration-300 text-gray-900 dark:text-gray-100">
       <h2 className="text-xl font-semibold mb-4">🧑‍💼 Create User</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <InputField
@@ -27,18 +27,21 @@ export function UserForm() {
           placeholder="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded"
         />
         <InputField
           type="text"
           placeholder="Email"
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded"
         />
         <InputField
           type="text"
           placeholder="Role"
           value={form.role}
           onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded"
         />
         <Button type="submit" isLoading={isPending}>
           Create User
@@ -46,12 +49,14 @@ export function UserForm() {
       </form>
 
       {isError && (
-        <p className="mt-2 text-sm text-red-600">
+        <p className="mt-2 text-sm text-red-600 dark:text-red-400">
           ❌ {(error as Error).message}
         </p>
       )}
       {data && (
-        <p className="mt-2 text-sm text-green-600">✅ Created: {data.name}</p>
+        <p className="mt-2 text-sm text-green-600 dark:text-green-400">
+          ✅ Created: {data.name}
+        </p>
       )}
     </section>
   );

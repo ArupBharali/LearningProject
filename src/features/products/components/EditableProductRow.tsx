@@ -17,17 +17,23 @@ export function EditableProductRow({
   const [deleteOpen, setDeleteOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between p-4 border border-gray-300 rounded-md mb-4">
+    <div className="flex items-center justify-between p-4 mb-4 
+      border rounded-md 
+      border-gray-300 dark:border-gray-700 
+      bg-white dark:bg-gray-800 
+      text-gray-800 dark:text-gray-100 
+      transition-colors duration-300"
+    >
       <Link
         href={`products/${product.id}`}
-        className="cursor-pointer text-gray-800 hover:text-blue-600 transition-colors"
+        className="cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
       >
         <strong>
           <span className="font-semibold">
             {serial} - {product.title}
-          </span>{' '}
+          </span>
         </strong>{' '}
-        <span className="text-gray-600">
+        <span className="text-gray-600 dark:text-gray-400">
           — ₹{product.price.toFixed(2)} (Qty: {product.inventory})
         </span>
       </Link>

@@ -3,7 +3,11 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '@/shared/store';
 
-export function AdminLayoutShell({ children }: { children: React.ReactNode }) {
+export function ProductLayoutShell({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const isOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
 
   return (

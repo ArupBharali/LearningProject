@@ -8,7 +8,7 @@ import { useState, useMemo } from 'react';
 import { Spinner } from '@/shared/components/ui/Spinner';
 
 const PAGE_SIZE = 50;
-const ROW_HEIGHT = 70; // or whatever fits your layout
+const ROW_HEIGHT = 70;
 
 export function UserList() {
   const { data: users, isLoading, isFetched, isFetching, status } = useUsers();
@@ -21,41 +21,42 @@ export function UserList() {
     return users.slice(start, start + PAGE_SIZE);
   }, [users, page]);
 
-  console.log('isLoading?', isLoading); // true if it's from cache or network
-  console.log('isFetched?', isFetched); // true if it's from cache or network
-  console.log('isFetching?', isFetching); // true if it's from cache or network
-  console.log('Status:', status); // 'success', 'loading', etc.
-
   const Row = ({ index, style }: ListChildComponentProps) => {
     const user = paginatedUsers[index];
     const serial = (page - 1) * PAGE_SIZE + index + 1;
 
     return user ? (
-      <div style={style}>
+      <div style={style} className="transition-colors duration-300">
         <EditableUserRow user={user} serial={serial} />
       </div>
     ) : null;
   };
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className="flex justify-center py-6">
         <Spinner />
       </div>
     );
-  if (!users || users.length === 0) return <p>No Users found</p>;
+  }
+
+  if (!users || users.length === 0) {
+    return <p className="text-gray-700 dark:text-gray-300">No Users found</p>;
+  }
 
   return (
-    <>
+    <div className="transition-colors duration-300">
       <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
-      <List
-        height={400}
-        itemCount={paginatedUsers?.length}
-        itemSize={ROW_HEIGHT}
-        width="100%"
-      >
-        {Row}
-      </List>
-    </>
+      <div className="rounded-md border border-gray-200 dark:border-gray-700 mt-4 overflow-hidden">
+        <List
+          height={400}
+          itemCount={paginatedUsers.length}
+          itemSize={ROW_HEIGHT}
+          width="100%"
+        >
+          {Row}
+        </List>
+      </div>
+    </div>
   );
 }

@@ -8,10 +8,11 @@ import { useState, useMemo, useEffect } from 'react';
 import { Spinner } from '@/shared/components/ui/Spinner';
 
 const PAGE_SIZE = 50;
-const ROW_HEIGHT = 70; // or whatever fits your layout
+const ROW_HEIGHT = 70;
 
 export function ProductList() {
   const [page, setPage] = useState(1);
+
   useEffect(() => {
     console.log('✅ ProductList rendered on client', page, PAGE_SIZE);
   }, [page]);
@@ -27,7 +28,10 @@ export function ProductList() {
     const serial = (page - 1) * PAGE_SIZE + index + 1;
 
     return product ? (
-      <div style={style}>
+      <div
+        style={style}
+        className="transition-colors duration-300"
+      >
         <EditableProductRow product={product} serial={serial} />
       </div>
     ) : null;
@@ -39,19 +43,27 @@ export function ProductList() {
         <Spinner />
       </div>
     );
-  if (!products || products.length === 0) return <p>No products found</p>;
+
+  if (!products || products.length === 0)
+    return (
+      <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors">
+        No products found
+      </p>
+    );
 
   return (
-    <>
+    <div className="transition-colors duration-300">
       <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
-      <List
-        height={400}
-        itemCount={products?.length}
-        itemSize={ROW_HEIGHT}
-        width="100%"
-      >
-        {Row}
-      </List>
-    </>
+      <div className="mt-4 rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <List
+          height={400}
+          itemCount={products.length}
+          itemSize={ROW_HEIGHT}
+          width="100%"
+        >
+          {Row}
+        </List>
+      </div>
+    </div>
   );
 }

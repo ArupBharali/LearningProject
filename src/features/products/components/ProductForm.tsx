@@ -20,8 +20,11 @@ export function ProductForm() {
     });
   };
 
+  const inputClass =
+    'bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded';
+
   return (
-    <section>
+    <section className="transition-colors duration-300 text-gray-900 dark:text-gray-100">
       <h2 className="text-xl font-semibold mb-4">🛍️ Create Product</h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -30,12 +33,14 @@ export function ProductForm() {
           placeholder="Product Title"
           value={form.title}
           onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+          className={inputClass}
         />
         <InputField
           type="number"
           placeholder="Price (e.g. 999.99)"
           value={form.price}
           onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
+          className={inputClass}
         />
         <InputField
           type="number"
@@ -44,6 +49,7 @@ export function ProductForm() {
           onChange={(e) =>
             setForm((f) => ({ ...f, inventory: e.target.value }))
           }
+          className={inputClass}
         />
         <div className="flex flex-col">
           <label className="mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -58,13 +64,14 @@ export function ProductForm() {
       </form>
 
       {isError && (
-        <p className="mt-4 text-sm text-red-600">
+        <p className="mt-4 text-sm text-red-600 dark:text-red-400">
           ❌ {(error as Error).message}
         </p>
       )}
-
       {data && (
-        <p className="mt-4 text-sm text-green-600">✅ Created: {data.title}</p>
+        <p className="mt-4 text-sm text-green-600 dark:text-green-400">
+          ✅ Created: {data.title}
+        </p>
       )}
     </section>
   );
