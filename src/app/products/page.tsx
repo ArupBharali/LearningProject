@@ -5,11 +5,7 @@ import { ProductList } from '@/features/products/components/ProductList';
 import { Button } from '@/shared/components/ui/Button';
 import { CreateProductModal } from '@/features/products/modals/CreateProductModal';
 import { Spinner } from '@/shared/components/ui/Spinner';
-import { SidebarToggle } from '@/shared/components/SidebarToggle';
-import { Sidebar } from '@/shared/components/ui/Sidebar';
 import ProductDataTable from '@/features/products/components/ProductDataTable';
-import { useProductsQuery } from '@/features/products/hooks/useProductsQuery';
-import { useFilteredProductsQuery } from '@/features/products/hooks/useFilteredProductsQuery';
 
 export default function Products() {
   const [showList, setShowList] = useState(false);
@@ -25,21 +21,11 @@ export default function Products() {
 
   return (
     <div>
-      <Sidebar
-        title="Product Menu"
-        links={[
-          { label: 'Dashboard', href: '/' },
-          { label: 'Products', href: '/products' },
-          { label: 'Users', href: '/users' },
-          { label: 'React Concepts', href: '/react-concepts' },
-        ]}
-      />
-
-      <main className="min-h-screen bg-gray-50 px-6 py-10">
+      <main className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-10 transition-colors duration-300">
         <div className="max-w-5xl mx-auto space-y-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+              <h1 className="text-3xl font-bold tracking-tight">
                 🛒 Products List
               </h1>
             </div>
@@ -77,7 +63,7 @@ export default function Products() {
           {showProductDataTable && <ProductDataTable />}
 
           {showList && (
-            <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+            <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow p-4 sm:p-6 transition-colors">
               <ProductList />
             </div>
           )}

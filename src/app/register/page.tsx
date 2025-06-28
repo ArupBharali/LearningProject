@@ -24,12 +24,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto py-10">
+    <div className="max-w-md mx-auto py-10 px-4 text-gray-900 dark:text-gray-100 transition-colors">
       <h2 className="text-2xl font-bold mb-6">Register</h2>
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="text"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded transition-colors"
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -37,7 +37,7 @@ export default function RegisterPage() {
         />
         <input
           type="email"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded transition-colors"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -45,7 +45,7 @@ export default function RegisterPage() {
         />
         <input
           type="password"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded transition-colors"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -53,7 +53,7 @@ export default function RegisterPage() {
         />
         <button
           type="submit"
-          className="w-full bg-green-600 text-white p-2 rounded"
+          className="w-full bg-green-600 hover:bg-green-700 text-white p-2 rounded transition-colors"
         >
           Sign Up
         </button>
