@@ -56,14 +56,17 @@ export function DropdownCascader({ data, value, onChange }: Props) {
     setCompetencies(subSbuObj?.competency ?? []);
   }, [value.subSbu]);
 
-  function invalid(value?: string) {
-    return value ? '' : 'border border-red-500 bg-red-50';
-  }
+  const inputBase =
+    'px-2 py-1 text-sm rounded border transition-colors duration-200 w-full';
+  const darkAware =
+    'bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100';
+  const invalid = (val?: string) =>
+    val ? '' : 'border-red-500 bg-red-50 dark:bg-red-950';
 
   return (
     <div className="grid grid-cols-4 gap-2">
       <select
-        className={`px-2 py-1 rounded ${invalid(value.los)}`}
+        className={`${inputBase} ${darkAware} ${invalid(value.los)}`}
         value={value.los ?? ''}
         onChange={(e) => onChange({ ...value, los: e.target.value })}
       >
@@ -75,7 +78,7 @@ export function DropdownCascader({ data, value, onChange }: Props) {
         ))}
       </select>
       <select
-        className={`px-2 py-1 rounded ${invalid(value.sbu)}`}
+        className={`${inputBase} ${darkAware} ${invalid(value.sbu)}`}
         value={value.sbu ?? ''}
         onChange={(e) => onChange({ ...value, sbu: e.target.value })}
       >
@@ -87,7 +90,7 @@ export function DropdownCascader({ data, value, onChange }: Props) {
         ))}
       </select>
       <select
-        className={`px-2 py-1 rounded ${invalid(value.subSbu)}`}
+        className={`${inputBase} ${darkAware} ${invalid(value.subSbu)}`}
         value={value.subSbu ?? ''}
         onChange={(e) => onChange({ ...value, subSbu: e.target.value })}
       >
@@ -99,7 +102,7 @@ export function DropdownCascader({ data, value, onChange }: Props) {
         ))}
       </select>
       <select
-        className={`px-2 py-1 rounded ${invalid(value.competency)}`}
+        className={`${inputBase} ${darkAware} ${invalid(value.competency)}`}
         value={value.competency ?? ''}
         onChange={(e) => onChange({ ...value, competency: e.target.value })}
       >

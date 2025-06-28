@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+type UIState = {
+  sidebarOpen: boolean;
+};
+
+const initialState: UIState = {
   sidebarOpen: false,
 };
 

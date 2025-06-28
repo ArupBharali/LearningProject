@@ -14,6 +14,7 @@ const links = [
   { href: '/products', label: 'Products' },
   { href: '/users', label: 'Users' },
   { href: '/cart', label: 'Cart' },
+  { href: '/project-form', label: 'Projects' },
   { href: '/admin', label: 'Admin' },
 ];
 
