@@ -2,6 +2,7 @@
 
 import { useFormContext, useFieldArray, useWatch } from 'react-hook-form';
 import { EditableEmployeeGrid } from '@/shared/components/ui/EditableEmployeeGrid';
+import EditableEmployeeGridWithNestedLogs from '@/shared/components/ui/EditableEmployeeGridWithNestedLogs';
 
 export default function Step3Resources() {
   const {
@@ -17,12 +18,19 @@ export default function Step3Resources() {
     remove: removeSkill,
   } = useFieldArray({ control, name: 'resources.skillMatrix' });
 
-  const extendedEmployees = useWatch({
-    control,
-    name: 'resources.extendedEmployees',
-  }) || [];
+  const extendedEmployees =
+    useWatch({
+      control,
+      name: 'resources.extendedEmployees',
+    }) || [];
 
-  const Label = ({ children, tooltip }: { children: string; tooltip?: string }) => (
+  const Label = ({
+    children,
+    tooltip,
+  }: {
+    children: string;
+    tooltip?: string;
+  }) => (
     <label className="text-sm font-medium text-gray-800 dark:text-gray-200 flex items-center gap-1">
       {children}
       {tooltip && (
@@ -49,34 +57,62 @@ export default function Step3Resources() {
 
         <div className="grid md:grid-cols-2 gap-5">
           <div>
-            <Label tooltip="Number of individuals planned to be staffed on this project.">Team Size</Label>
-            <Input type="number" {...register('resources.teamSize', { valueAsNumber: true })} />
+            <Label tooltip="Number of individuals planned to be staffed on this project.">
+              Team Size
+            </Label>
+            <Input
+              type="number"
+              {...register('resources.teamSize', { valueAsNumber: true })}
+            />
             {errors?.resources?.teamSize?.message && (
-              <p className="text-sm text-red-500 mt-1">{errors.resources.teamSize.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.resources.teamSize.message}
+              </p>
             )}
           </div>
 
           <div>
-            <Label tooltip="Comma-separated list of org departments participating.">Departments</Label>
-            <Input placeholder="e.g. Engineering, Risk, Sales" {...register('resources.departments')} />
+            <Label tooltip="Comma-separated list of org departments participating.">
+              Departments
+            </Label>
+            <Input
+              placeholder="e.g. Engineering, Risk, Sales"
+              {...register('resources.departments')}
+            />
             {errors?.resources?.departments?.message && (
-              <p className="text-sm text-red-500 mt-1">{errors.resources.departments.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.resources.departments.message}
+              </p>
             )}
           </div>
 
           <div>
-            <Label tooltip="Key functional roles required for this delivery.">Roles Required</Label>
-            <Input placeholder="e.g. PM, QA Lead, DevOps" {...register('resources.roles')} />
+            <Label tooltip="Key functional roles required for this delivery.">
+              Roles Required
+            </Label>
+            <Input
+              placeholder="e.g. PM, QA Lead, DevOps"
+              {...register('resources.roles')}
+            />
             {errors?.resources?.roles?.message && (
-              <p className="text-sm text-red-500 mt-1">{errors.resources.roles.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.resources.roles.message}
+              </p>
             )}
           </div>
 
           <div>
-            <Label tooltip="Estimated total cost (people, vendors, travel, tools).">Budget Estimate</Label>
-            <Input placeholder="e.g. 150000 USD" {...register('resources.budget')} />
+            <Label tooltip="Estimated total cost (people, vendors, travel, tools).">
+              Budget Estimate
+            </Label>
+            <Input
+              placeholder="e.g. 150000 USD"
+              {...register('resources.budget')}
+            />
             {errors?.resources?.budget?.message && (
-              <p className="text-sm text-red-500 mt-1">{errors.resources.budget.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.resources.budget.message}
+              </p>
             )}
           </div>
         </div>
@@ -89,7 +125,9 @@ export default function Step3Resources() {
             </h3>
             <button
               type="button"
-              onClick={() => appendSkill({ skill: '', required: 0, available: 0 })}
+              onClick={() =>
+                appendSkill({ skill: '', required: 0, available: 0 })
+              }
               className="text-sm text-blue-600 hover:underline"
             >
               ➕ Add Skill
@@ -115,7 +153,9 @@ export default function Step3Resources() {
                 <Label>Required</Label>
                 <Input
                   type="number"
-                  {...register(`resources.skillMatrix.${index}.required`, { valueAsNumber: true })}
+                  {...register(`resources.skillMatrix.${index}.required`, {
+                    valueAsNumber: true,
+                  })}
                 />
               </div>
 
@@ -123,7 +163,9 @@ export default function Step3Resources() {
                 <Label>Available</Label>
                 <Input
                   type="number"
-                  {...register(`resources.skillMatrix.${index}.available`, { valueAsNumber: true })}
+                  {...register(`resources.skillMatrix.${index}.available`, {
+                    valueAsNumber: true,
+                  })}
                 />
               </div>
 
@@ -147,6 +189,14 @@ export default function Step3Resources() {
             value={extendedEmployees}
             onChange={(rows) => setValue('resources.extendedEmployees', rows)}
           />
+        </div>
+
+        {/* Extended Employee Allocation */}
+        <div className="space-y-4 border-t pt-4">
+          <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+            🧑‍💻 Extended Employee Allocation
+          </h4>
+          <EditableEmployeeGridWithNestedLogs />
         </div>
       </div>
     </section>

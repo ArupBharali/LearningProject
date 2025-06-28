@@ -12,21 +12,64 @@ import Step4Requirements from './steps/Step4Requirements';
 import Step5Review from './steps/Step5Review';
 // 🔜 import Step2Timeline, Step3..., etc. later
 
-const STEPS = ['General Info', 'Timeline', 'Resources', 'Requirements', 'Review'];
+const STEPS = [
+  'General Info',
+  'Timeline',
+  'Resources',
+  'Requirements',
+  'Review',
+];
 
 const INITIAL_DATA: ProjectFormData = {
-  step: 0,
-  generalInfo: { name: '', sponsor: '', type: 'Internal', description: '' },
-  timeline: { startDate: '', endDate: '', phases: [] },
-  resources: { teamSize: 0, departments: [], hasVendors: false },
-  requirements: { integrations: [], complianceNeeds: false, conditionalFields: {} },
-  approval: { reviewer: '', notes: '' },
+  step: 1,
+  generalInfo: {
+    name: '',
+    sponsor: '',
+    type: 'Internal',
+    description: '',
+    code: '',
+    businessUnit: '',
+    confidentiality: 'Internal',
+    relatedProjects: '',
+    tags: '',
+  },
+  timeline: {
+    startDate: '',
+    endDate: '',
+    delayTolerance: 0,
+    kickoffMethod: 'In-person',
+    phases: [],
+    milestones: [],
+  },
+  resources: {
+    teamSize: 0,
+    departments: '',
+    roles: '',
+    budget: '',
+    skillMatrix: [],
+    extendedEmployees: [],
+  },
+  requirements: {
+    complianceNeeds: false,
+    complianceFramework: '',
+    securityLevel: 'None',
+    storagePolicy: '',
+    integrationTypes: [],
+    cloudProvider: '',
+    cloudRegion: '',
+    cloudCost: 0,
+  },
+  approval: {
+    reviewer: '',
+    notes: '',
+  },
 };
 
 export default function ProjectFormWizard() {
   const methods = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
     defaultValues: INITIAL_DATA,
+    mode: 'onChange'
   });
 
   const step = methods.watch('step');
@@ -43,9 +86,14 @@ export default function ProjectFormWizard() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6 max-w-4xl mx-auto">
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className="space-y-6 max-w-4xl mx-auto"
+      >
         <h2 className="text-xl font-bold">{STEPS[step]}</h2>
-        <div className="text-right text-sm text-gray-500">{status === 'saving' ? 'Saving...' : 'Saved'}</div>
+        <div className="text-right text-sm text-gray-500">
+          {status === 'saving' ? 'Saving...' : 'Saved'}
+        </div>
 
         {/* Step rendering */}
         {step === 0 && <Step1GeneralInfo />}
