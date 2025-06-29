@@ -6,9 +6,9 @@ export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  console.log('GET arup1', params.id);
+  console.log('src/app/api/products/[id]/route.ts GET', params.id);
   const user = await getUserById(params.id);
-  console.log('user', user);
+  console.log('src/app/api/products/[id]/route.ts user', user);
   if (!user) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
   }

@@ -16,16 +16,16 @@ export async function GET(req: NextRequest) {
 
   const where = buildProductsFilterFromQuery(searchParams);
 
-  console.log('arup1', req.url, page, pageSize, skip);
+  // console.log('arup1', req.url, page, pageSize, skip);
 
   // 🔀 If no filters provided, return all products (paginated)
   if (Object.keys(where).length === 0) {
-    console.log('no filters applied on products, so fetching all');
+    // console.log('no filters applied on products, so fetching all');
     const all = await getProducts();
     const data = all.products.slice(skip, skip + pageSize);
     return NextResponse.json({ data, total: all.products.length });
   } else {
-    console.log('filters applied on products, so fetching filtered');
+    // console.log('filters applied on products, so fetching filtered');
 
     // console.log('arup2',{where, skip, take: pageSize});
     return NextResponse.json(

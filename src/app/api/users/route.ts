@@ -4,7 +4,7 @@ import { getUsers, addUser } from '@/lib/data/usersData';
 import { nanoid } from 'nanoid';
 
 export async function GET() {
-  console.log('GET arup');
+  console.log('src/app/api/products/route.ts GET');
   return NextResponse.json(await getUsers());
 }
 

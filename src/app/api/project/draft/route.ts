@@ -3,16 +3,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import getDb from '@/lib/db/project-draft';
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
+  const { id, data } = await req.json();
   const db = await getDb();
 
-  const id = 'current'; // or use session/user-specific ID
-  const index = db.data!.drafts.findIndex((d) => d.id === id);
+//   console.log('api/project/draft/route.ts POST { id, data }', { id, data });
+
+  const index = db.data!.drafts.findIndex((d) => d.id === id && d.status === 'draft');
 
   if (index >= 0) {
-    db.data!.drafts[index].data = body;
+    console.log('api/project/draft/route.ts POST found, updating it');
+    db.data!.drafts[index].data = data;
   } else {
-    db.data!.drafts.push({ id, data: body });
+    console.log('api/project/draft/route.ts POST not found, inserting it');
+    db.data!.drafts.push({ id, status: 'draft', data: data });
   }
 
   await db.write();
