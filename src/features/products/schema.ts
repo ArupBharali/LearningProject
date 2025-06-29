@@ -65,7 +65,7 @@ export type CreateProductInput = z.infer<typeof productSchema>;
 export function parseProduct(data: unknown): Product {
   const result = ValidatedProductSchema.safeParse(data);
   if (!result.success) {
-    console.error('❌ Product validation failed:', result.error.format());
+    console.error('src/feature/schema.ts parseProduct ❌ Product validation failed:', result.error.format());
     throw new Error('Invalid product data');
   }
   return result.data;
@@ -75,7 +75,7 @@ export function parseProductsApiResponse(data: unknown): ProductsApiResponse {
   const result = ProductsApiResponseSchema.safeParse(data);
   if (!result.success) {
     console.error(
-      '❌ Api response products validation failed:',
+      'src/feature/schema.ts parseProductsApiResponse ❌ Api response products validation failed:',
       result.error.format()
     );
     throw new Error('Invalid api response products structure');

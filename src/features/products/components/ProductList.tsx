@@ -14,7 +14,7 @@ export function ProductList() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    console.log('✅ ProductList rendered on client', page, PAGE_SIZE);
+    // console.log('src/features/products/components/ProductList ✅ ProductList rendered on client', page, PAGE_SIZE);
   }, [page]);
 
   const { data, isLoading } = useProductsQuery(page, PAGE_SIZE);

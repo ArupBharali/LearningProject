@@ -5,6 +5,8 @@ import { EditableEmployeeGrid } from '@/shared/components/ui/EditableEmployeeGri
 import EditableEmployeeGridWithNestedLogs from '@/shared/components/ui/EditableEmployeeGridWithNestedLogs';
 
 export default function Step3Resources() {
+console.log('src/features/project-form/components/steps/Step1GeneralInfo.tsx/Step3Resources');
+
   const {
     register,
     control,

@@ -8,7 +8,7 @@ export async function fetchCurrentUser(): Promise<User> {
   const data = await res.json();
   const parsed = UserSchema.safeParse(data);
   if (!parsed.success) {
-    console.error('❌ Invalid user shape:', parsed.error.format());
+    console.error('src/app/api/auth.ts fetchCurrentUser ❌ Invalid user shape:', parsed.error.format());
     throw new Error('Invalid user data');
   }
   return parsed.data;

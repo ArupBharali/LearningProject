@@ -3,6 +3,8 @@
 import { useFormContext, useFieldArray } from 'react-hook-form';
 
 export default function Step2Timeline() {
+console.log('src/features/project-form/components/steps/Step1GeneralInfo.tsx/Step2Timeline');
+
   const {
     register,
     control,

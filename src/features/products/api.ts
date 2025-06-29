@@ -23,14 +23,14 @@ export async function fetchProducts(
   page: number,
   pageSize: number
 ): Promise<ProductsApiResponse> {
-  console.log('fetchProducts arguments', page, pageSize);
+  // console.log('src/feature/products/api.ts fetchProducts arguments', page, pageSize);
   const data = await apiFetch('/api/products', {
     params: {
       page,
       pageSize,
     },
   });
-  console.log('fetchProducts api response data', data);
+  // console.log('src/feature/products/api.ts fetchProducts api response data', data);
   return parseProductsApiResponse(data);
 }
 export async function fetchFilteredProducts(
@@ -38,7 +38,7 @@ export async function fetchFilteredProducts(
   pageSize: number,
   filters: Record<string, string>
 ): Promise<ProductsApiResponse> {
-  console.log('fetchProducts arguments', page, pageSize);
+  // console.log('src/feature/products/api.ts fetchFilteredProducts arguments', page, pageSize);
 
   const data = await apiFetch('/api/products', {
     params: {
@@ -47,7 +47,7 @@ export async function fetchFilteredProducts(
       ...filters,
     },
   });
-  console.log('fetchFilteredProducts api response data', data);
+  // console.log('fetchFilteredProducts fetchFilteredProducts api response data', data);
   return parseProductsApiResponse(data);
 }
 export async function updateProduct(
@@ -75,7 +75,7 @@ export async function createProduct(
 ): Promise<Product> {
   const parsed = productSchema.safeParse(input);
   if (!parsed.success) {
-    console.error('❌ Validation failed', parsed.error.format());
+    console.error('fetchFilteredProducts createProduct ❌ Validation failed', parsed.error.format());
     throw new Error('Invalid input');
   }
 

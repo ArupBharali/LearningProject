@@ -3,6 +3,8 @@
 import { useFormContext, useFieldArray, useWatch } from 'react-hook-form';
 
 export default function Step4Requirements() {
+console.log('src/features/project-form/components/steps/Step1GeneralInfo.tsx/Step4Requirements');
+
   const {
     register,
     control,

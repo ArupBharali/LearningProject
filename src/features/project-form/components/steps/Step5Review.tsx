@@ -5,6 +5,8 @@ import { projectSchema } from '../../schema';
 import { useZodValidation } from '@/shared/hooks/useZodValidation';
 
 export default function Step5Review() {
+console.log('src/features/project-form/components/steps/Step1GeneralInfo.tsx/Step5Review');
+
   const { getValues } = useFormContext();
   const data = getValues();
 

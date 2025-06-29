@@ -125,7 +125,7 @@ const ROW_HEIGHT = 70; // or whatever fits your layout
 export default function ProductDataTable() {
   const [page, setPage] = useState(1);
   useEffect(() => {
-    console.log('✅ ProductList rendered on client', page, PAGE_SIZE);
+    // console.log('src/features/products/components/ProductDataTable ✅ ProductList rendered on client', page, PAGE_SIZE);
   }, [page]);
 
   const [filters, setFilters] = useState<Record<string, string>>({});

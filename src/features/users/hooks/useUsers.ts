@@ -12,13 +12,13 @@ export function useUsers() {
 
   useEffect(() => {
     const cached = queryClient.getQueryData(['users']);
-    console.log('Is it cached? users', !!cached);
+    // console.log('src/features/users/hooks/useUsers.ts/useUsers/useEffect > Is it cached? users', !!cached);
 
     queryClient
       .getQueryCache()
       .getAll()
       .forEach((q) => {
-        console.log('Cached key:', q.queryKey);
+        // console.log('src/features/users/hooks/useUsers.ts/useUsers/useEffect/forEach > Cached key:', q.queryKey);
       });
   }, [queryClient, query.dataUpdatedAt]);
 

@@ -10,6 +10,7 @@ export function useLogin() {
   return useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
+      console.log('useLogin hook onSuccess data', data);
       dispatch(login({ user: data.user, token: data.token }));
     },
   });

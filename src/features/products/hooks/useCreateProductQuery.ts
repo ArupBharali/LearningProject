@@ -14,7 +14,7 @@ export function useCreateProduct() {
     },
 
     onSuccess: (data, variables, context) => {
-      console.log('✅ Successfully created:', data);
+      // console.log('src/features/products/hooks/useCreateProductQuery ✅ Successfully created:', data);
 
       // Invalidate the product list so it refetches from the server
       queryClient.invalidateQueries({ queryKey: ['products'] });
@@ -28,7 +28,7 @@ export function useCreateProduct() {
     },
 
     onSettled: (data, error, variables, context) => {
-      console.log('🎯 Mutation complete');
+      console.log('src/features/products/hooks/useCreateProductQuery 🎯 Mutation complete');
 
       // Safely ensure UI cleanup (spinner stop, button re-enable, etc.)
       // You can still invalidate queries here if not done in onSuccess

@@ -3,7 +3,7 @@ import { fetchProducts } from '@/features/products/api';
 import { useEffect } from 'react';
 
 export function useProductsQuery(page: number, pageSize: number) {
-  console.log('useProductsQuery', page, pageSize);
+  // console.log('src/features/products/hooks/useProductsQuery', page, pageSize);
 
   const query = useQuery({
     queryKey: ['products', page, pageSize],
@@ -15,13 +15,13 @@ export function useProductsQuery(page: number, pageSize: number) {
 
   useEffect(() => {
     const cached = queryClient.getQueryData(['products', page, pageSize]);
-    console.log('Is it cached? products', !!cached);
+    // console.log('src/features/products/hooks/useProductsQuery/useProductsQuery/useEffect Is it cached? products', !!cached);
 
     queryClient
       .getQueryCache()
       .getAll()
       .forEach((q) => {
-        console.log('Cached key:', q.queryKey);
+        // console.log('src/features/products/hooks/useProductsQuery/useProductsQuery/useEffect Cached key:', q.queryKey);
       });
   }, [queryClient, query.dataUpdatedAt]);
 

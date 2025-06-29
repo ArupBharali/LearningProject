@@ -3,6 +3,8 @@
 import { useFormContext } from 'react-hook-form';
 
 export default function Step1GeneralInfo() {
+console.log('src/features/project-form/components/steps/Step1GeneralInfo.tsx/Step1GeneralInfo');
+
   const {
     register,
     formState: { errors },

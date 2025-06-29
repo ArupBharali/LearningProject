@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { projectSchema, ProjectFormData } from '../schema';
@@ -20,55 +19,12 @@ const STEPS = [
   'Review',
 ];
 
-const INITIAL_DATA: ProjectFormData = {
-  step: 1,
-  generalInfo: {
-    name: '',
-    sponsor: '',
-    type: 'Internal',
-    description: '',
-    code: '',
-    businessUnit: '',
-    confidentiality: 'Internal',
-    relatedProjects: '',
-    tags: '',
-  },
-  timeline: {
-    startDate: '',
-    endDate: '',
-    delayTolerance: 0,
-    kickoffMethod: 'In-person',
-    phases: [],
-    milestones: [],
-  },
-  resources: {
-    teamSize: 0,
-    departments: '',
-    roles: '',
-    budget: '',
-    skillMatrix: [],
-    extendedEmployees: [],
-  },
-  requirements: {
-    complianceNeeds: false,
-    complianceFramework: '',
-    securityLevel: 'None',
-    storagePolicy: '',
-    integrationTypes: [],
-    cloudProvider: '',
-    cloudRegion: '',
-    cloudCost: 0,
-  },
-  approval: {
-    reviewer: '',
-    notes: '',
-  },
-};
+export default function ProjectFormWizard({defaultValues }) {
+  console.log('src/features/project-form/components/ProjectFormWizard.tsx/ProjectFormWizard');
 
-export default function ProjectFormWizard() {
   const methods = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
-    defaultValues: INITIAL_DATA,
+    defaultValues: defaultValues,
     mode: 'onChange'
   });
 
@@ -81,7 +37,7 @@ export default function ProjectFormWizard() {
 
   const onSubmit = (data: ProjectFormData) => {
     // Call final API here
-    console.log('Submitted!', data);
+    // console.log('src/features/project-form/components/ProjectFormWizard.tsx/ProjectFormWizard/onSubmit > Submitted!', data);
   };
 
   return (
