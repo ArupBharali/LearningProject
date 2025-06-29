@@ -10,7 +10,7 @@ export async function apiFetch<T>(
   options: RequestInit & { params?: Record<string, any> } = {}
 ): Promise<T> {
   const { params, ...fetchOptions } = options;
-  console.log('hitting apiFetch: ', options, params, fetchOptions);
+  // console.log('src/shared/lib/api.ts/apiFetch > hitting apiFetch: ', options, params, fetchOptions);
 
   const url = new URL(
     `${BASE_URL.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`
@@ -21,12 +21,12 @@ export async function apiFetch<T>(
     });
   }
 
-  console.log('apiFetch endpoint', url, fetchOptions);
+  // console.log('src/shared/lib/api.ts/apiFetch > apiFetch endpoint', url, fetchOptions);
   const res = await fetch(url.toString(), {
     headers: { 'Content-Type': 'application/json' },
     ...fetchOptions,
   });
-  console.log('apiFetch res', { res });
+  // console.log('src/shared/lib/api.ts/apiFetch > apiFetch res', { res });
 
   if (!res.ok) {
     const message = await res.text();
