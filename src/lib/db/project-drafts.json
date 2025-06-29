@@ -1,0 +1,147 @@
+{
+  "drafts": [
+    {
+      "id": "admin@example.com",
+      "data": {
+        "step": 0,
+        "generalInfo": {
+          "name": "",
+          "sponsor": "",
+          "type": "Internal",
+          "description": "",
+          "code": "",
+          "businessUnit": "",
+          "confidentiality": "Internal",
+          "relatedProjects": "",
+          "tags": ""
+        },
+        "timeline": {
+          "startDate": "",
+          "endDate": "",
+          "delayTolerance": 0,
+          "kickoffMethod": "In-person",
+          "phases": [],
+          "milestones": []
+        },
+        "resources": {
+          "teamSize": 0,
+          "departments": "",
+          "roles": "",
+          "budget": "",
+          "skillMatrix": [],
+          "extendedEmployees": []
+        },
+        "requirements": {
+          "complianceNeeds": false,
+          "complianceFramework": "",
+          "securityLevel": "None",
+          "storagePolicy": "",
+          "integrationTypes": [],
+          "cloudProvider": "",
+          "cloudRegion": "",
+          "cloudCost": 0
+        },
+        "approval": {
+          "reviewer": "",
+          "notes": ""
+        }
+      }
+    },
+    {
+      "id": "admin@example.com",
+      "status": "draft",
+      "data": {
+        "step": 0,
+        "generalInfo": {
+          "name": "random data",
+          "sponsor": "fhghfghfghgfdfsdffgtctyhrtyhrthrthrthrfhrtrthrthrthrt",
+          "type": "Internal",
+          "description": "",
+          "code": "",
+          "businessUnit": "dfs",
+          "confidentiality": "Internal",
+          "relatedProjects": "",
+          "tags": ""
+        },
+        "timeline": {
+          "startDate": "",
+          "endDate": "",
+          "delayTolerance": 0,
+          "kickoffMethod": "In-person",
+          "phases": [],
+          "milestones": []
+        },
+        "resources": {
+          "teamSize": 0,
+          "departments": "",
+          "roles": "",
+          "budget": "",
+          "skillMatrix": [],
+          "extendedEmployees": []
+        },
+        "requirements": {
+          "complianceNeeds": false,
+          "complianceFramework": "",
+          "securityLevel": "None",
+          "storagePolicy": "",
+          "integrationTypes": [],
+          "cloudProvider": "",
+          "cloudRegion": "",
+          "cloudCost": 0
+        },
+        "approval": {
+          "reviewer": "",
+          "notes": ""
+        }
+      }
+    },
+    {
+      "id": "manager@example.com",
+      "status": "draft",
+      "data": {
+        "step": 0,
+        "generalInfo": {
+          "name": "",
+          "sponsor": "",
+          "type": "Internal",
+          "description": "",
+          "code": "",
+          "businessUnit": "",
+          "confidentiality": "Internal",
+          "relatedProjects": "",
+          "tags": ""
+        },
+        "timeline": {
+          "startDate": "",
+          "endDate": "",
+          "delayTolerance": 0,
+          "kickoffMethod": "In-person",
+          "phases": [],
+          "milestones": []
+        },
+        "resources": {
+          "teamSize": 0,
+          "departments": "",
+          "roles": "",
+          "budget": "",
+          "skillMatrix": [],
+          "extendedEmployees": []
+        },
+        "requirements": {
+          "complianceNeeds": false,
+          "complianceFramework": "",
+          "securityLevel": "None",
+          "storagePolicy": "",
+          "integrationTypes": [],
+          "cloudProvider": "",
+          "cloudRegion": "",
+          "cloudCost": 0
+        },
+        "approval": {
+          "reviewer": "",
+          "notes": ""
+        }
+      }
+    }
+  ]
+}

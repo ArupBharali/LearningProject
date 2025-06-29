@@ -19,7 +19,7 @@ export async function getFilteredProducts({
   await initDB();
   const allProducts = db.data!.products;
 
-  console.log('getFilteredProducts where', where, 'skip', skip, 'take', take);
+  // console.log('src/lib/data/productsData.ts/getFilteredProducts > getFilteredProducts where', where, 'skip', skip, 'take', take);
   // Filter products
   const filtered = allProducts.filter((product) => {
     return Object.entries(where).every(([key, condition]) => {
@@ -38,7 +38,7 @@ export async function getFilteredProducts({
       return value === condition;
     });
   });
-  console.log('getFilteredProducts filtered[0]', filtered[0]);
+  // console.log('src/lib/data/productsData.ts/getFilteredProducts > filtered[0]', filtered[0]);
   // Paginate
   const paginated = filtered.slice(skip, skip + take);
   // console.log('arup4',paginated);
