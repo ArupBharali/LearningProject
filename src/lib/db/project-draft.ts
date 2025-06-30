@@ -1,27 +1,17 @@
 // lib/lowdb.ts
-import { ProjectFormData, INITIAL_DATA } from '@/features/project-form/schema';
+import { ProjectEntry, ProjectFormData } from '@/features/projects/schema';
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { join } from 'path';
 
-type DraftEntry = {
-  id: string;
-  data: ProjectFormData;
-  status: 'draft' | 'submitted';
-};
-
-type DraftDB = {
-  drafts: DraftEntry[];
-};
-
-const file = join(process.cwd(), 'src/lib/db/project-drafts.json');
-const adapter = new JSONFile<DraftDB>(file);
-const db = new Low<DraftDB>(adapter, {drafts: []});
+const file = join(process.cwd(), 'src/lib/db/projects.json');
+const adapter = new JSONFile<ProjectFormData[]>(file);
+const db = new Low<ProjectFormData[]>(adapter, []);
 
 // Ensure defaults
 async function getDb() {
   await db.read();
-  db.data ||= {drafts: []};
+  db.data ||= [];
   return db;
 }
 
