@@ -43,7 +43,7 @@ export function EditableEmployeeGrid() {
 
   return (
     <div className="w-full overflow-x-auto overflow-visible">
-      <table className="min-w-[1200px] table-fixed text-sm border border-gray-200 dark:border-gray-700 transition-colors">
+      <table className="table-fixed text-sm border border-gray-200 dark:border-gray-700 transition-colors">
         <colgroup>
           <col className="w-80" />
           <col className="w-80" />

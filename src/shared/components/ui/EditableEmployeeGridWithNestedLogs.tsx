@@ -17,7 +17,7 @@ export default function EditableEmployeeGridWithNestedLogs() {
     append: appendEmployee,
   } = useFieldArray({
     control,
-    name: 'resources.extendedEmployees',
+    name: 'data.resources.extendedEmployees',
   });
 
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
@@ -44,8 +44,8 @@ export default function EditableEmployeeGridWithNestedLogs() {
   }, [employeeFields, appendEmployee]);
 
   return (
-    <div className="space-y-6 overflow-x-auto">
-      <table className="min-w-[1000px] table-fixed border border-gray-200 dark:border-gray-700 text-sm">
+    <div className="w-full space-y-6 overflow-x-auto">
+      <table className="w-full table-fixed border border-gray-200 dark:border-gray-700 text-sm">
         <thead className="bg-gray-100 dark:bg-gray-800">
           <tr>
             <th className="w-48 px-2 py-2">Name</th>
@@ -61,26 +61,26 @@ export default function EditableEmployeeGridWithNestedLogs() {
               <tr className="border-t border-gray-300 dark:border-gray-700">
                 <td className="px-2 py-1">
                   <input
-                    {...register(`resources.extendedEmployees.${index}.name`)}
+                    {...register(`data.resources.extendedEmployees.${index}.name`)}
                     className="input w-full"
                   />
                 </td>
                 <td className="px-2 py-1">
                   <input
-                    {...register(`resources.extendedEmployees.${index}.phone`)}
+                    {...register(`data.resources.extendedEmployees.${index}.phone`)}
                     className="input w-full"
                   />
                 </td>
                 <td className="px-2 py-1">
                   <input
                     type="date"
-                    {...register(`resources.extendedEmployees.${index}.joiningDate`)}
+                    {...register(`data.resources.extendedEmployees.${index}.joiningDate`)}
                     className="input w-full"
                   />
                 </td>
                 <td className="px-2 py-1">
                   <input
-                    {...register(`resources.extendedEmployees.${index}.comment`)}
+                    {...register(`data.resources.extendedEmployees.${index}.comment`)}
                     className="input w-full"
                   />
                 </td>

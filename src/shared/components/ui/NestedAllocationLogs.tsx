@@ -11,7 +11,7 @@ export default function NestedAllocationLogs({ index }: { index: number }) {
     remove,
   } = useFieldArray({
     control,
-    name: `resources.extendedEmployees.${index}.allocationLogs`,
+    name: `data.resources.extendedEmployees.${index}.allocationLogs`,
   });
 
   return (
@@ -42,19 +42,19 @@ export default function NestedAllocationLogs({ index }: { index: number }) {
           <input
             type="text"
             placeholder="Phase"
-            {...register(`resources.extendedEmployees.${index}.allocationLogs.${logIndex}.phase`)}
+            {...register(`data.resources.extendedEmployees.${index}.allocationLogs.${logIndex}.phase`)}
             className="input"
           />
           <input
             type="number"
             placeholder="%"
-            {...register(`resources.extendedEmployees.${index}.allocationLogs.${logIndex}.allocation`, {
+            {...register(`data.resources.extendedEmployees.${index}.allocationLogs.${logIndex}.allocation`, {
               valueAsNumber: true,
             })}
             className="input"
           />
           <select
-            {...register(`resources.extendedEmployees.${index}.allocationLogs.${logIndex}.status`)}
+            {...register(`data.resources.extendedEmployees.${index}.allocationLogs.${logIndex}.status`)}
             className="input"
           >
             <option value="">Status</option>
@@ -65,7 +65,7 @@ export default function NestedAllocationLogs({ index }: { index: number }) {
           <input
             type="text"
             placeholder="Reviewer"
-            {...register(`resources.extendedEmployees.${index}.allocationLogs.${logIndex}.reviewer`)}
+            {...register(`data.resources.extendedEmployees.${index}.allocationLogs.${logIndex}.reviewer`)}
             className="input"
           />
           <button
