@@ -1,4 +1,31 @@
 |-- undefined
+    |-- .env
+    |-- .env.local
+    |-- .eslintrc.json
+    |-- .gitignore
+    |-- .prettierrc
+    |-- COMPLEX_FORM_REQUIREMENTS.md
+    |-- eslint.config.mjs
+    |-- generateEmployees.ts
+    |-- generateProducts.ts
+    |-- generateUsers.ts
+    |-- launch.json
+    |-- next-env.d.ts
+    |-- next.config.ts
+    |-- package-from-extra-portal.json
+    |-- package-lock.json
+    |-- package.json
+    |-- postcss.config.js
+    |-- questions.md
+    |-- README.md
+    |-- tailwind.config-from-extra-portal.ts
+    |-- tailwind.config.js
+    |-- TODO.md
+    |-- tsconfig-from-extra-portal.json
+    |-- tsconfig.json
+    |-- .vscode
+    |   |-- launch.json
+    |   |-- settings.json
     |-- src
         |-- app
         |   |-- favicon.ico
@@ -20,6 +47,7 @@
         |   |-- api
         |   |   |-- auth
         |   |   |   |-- [...nextauth]
+        |   |   |       |-- .gitkeep
         |   |   |       |-- route.ts
         |   |   |-- employees
         |   |   |   |-- bulkUpdate
@@ -34,15 +62,15 @@
         |   |   |   |-- route.ts
         |   |   |   |-- [id]
         |   |   |       |-- route.ts
-        |   |   |-- project
-        |   |   |   |-- audit
+        |   |   |-- projects
+        |   |   |   |-- route.ts
+        |   |   |   |-- new
         |   |   |   |   |-- route.ts
-        |   |   |   |-- draft
-        |   |   |   |   |-- route.ts
-        |   |   |   |   |-- [id]
-        |   |   |   |       |-- route.ts
-        |   |   |   |-- submit
-        |   |   |       |-- route.ts
+        |   |   |   |-- [projectId]
+        |   |   |       |-- draft
+        |   |   |       |   |-- route.ts
+        |   |   |       |-- submit
+        |   |   |           |-- route.ts
         |   |   |-- stock-request
         |   |   |   |-- draft.ts
         |   |   |   |-- submit.ts
@@ -77,12 +105,12 @@
         |   |   |   |-- page.tsx
         |   |   |-- [id]
         |   |       |-- page.tsx
-        |   |-- project-form
+        |   |-- projects
         |   |   |-- page.tsx
-        |   |   |-- [id]
-        |   |       |-- approve.ts
+        |   |   |-- new
+        |   |   |   |-- page.tsx
+        |   |   |-- view
         |   |       |-- page.tsx
-        |   |       |-- reject.ts
         |   |-- react-concepts
         |   |   |-- page.tsx
         |   |-- register
@@ -152,9 +180,18 @@
         |   |       |-- ConfirmDeleteModal.tsx
         |   |       |-- CreateProductModal.tsx
         |   |       |-- EditProductModal.tsx
-        |   |-- project-form
+        |   |-- projects
         |   |   |-- schema.ts
+        |   |   |-- api
+        |   |   |   |-- draft
+        |   |   |   |   |-- loadDraft.ts
+        |   |   |   |   |-- saveDraft.ts
+        |   |   |   |   |-- submitDraft.ts
+        |   |   |   |-- project
+        |   |   |       |-- listProjects.ts
+        |   |   |       |-- loadProjectById.ts
         |   |   |-- components
+        |   |   |   |-- ProjectFormByIdPage.tsx
         |   |   |   |-- ProjectFormWizard.tsx
         |   |   |   |-- steps
         |   |   |       |-- Step1GeneralInfo.tsx
@@ -163,9 +200,6 @@
         |   |   |       |-- Step4Requirements.tsx
         |   |   |       |-- Step5Review.tsx
         |   |   |-- hooks
-        |   |   |   |-- useAutoSave.ts
-        |   |   |-- utils
-        |   |       |-- fieldVisibility.ts
         |   |       |-- useAutoSave.ts
         |   |-- react-concepts
         |   |   |-- constants.ts
@@ -225,6 +259,7 @@
         |       |-- products.ts
         |       |-- project-draft.ts
         |       |-- project-drafts.json
+        |       |-- projects.json
         |       |-- types.ts
         |       |-- users.json
         |       |-- users.ts
@@ -238,21 +273,21 @@
             |   |-- ThemeSync.tsx
             |   |-- ThemeToggle.tsx
             |   |-- ui
-            |   |   |-- Accordion.tsx
-            |   |   |-- Button.tsx
-            |   |   |-- ButtonSubmit.tsx
-            |   |   |-- DataTable.tsx
-            |   |   |-- DebouncedInput.tsx
-            |   |   |-- DropdownCascader.tsx
-            |   |   |-- DynamicGrid.tsx
-            |   |   |-- EditableEmployeeGrid.tsx
-            |   |   |-- EditableEmployeeGridWithNestedLogs.tsx
-            |   |   |-- EmployeeSearchInput.tsx
-            |   |   |-- InfoTooltip.tsx
-            |   |   |-- InputField.tsx
-            |   |   |-- NestedAllocationLogs.tsx
-            |   |   |-- Sidebar.tsx
-            |   |   |-- Spinner.tsx
+            |       |-- Accordion.tsx
+            |       |-- Button.tsx
+            |       |-- ButtonSubmit.tsx
+            |       |-- DataTable.tsx
+            |       |-- DebouncedInput.tsx
+            |       |-- DropdownCascader.tsx
+            |       |-- DynamicGrid.tsx
+            |       |-- EditableEmployeeGrid.tsx
+            |       |-- EditableEmployeeGridWithNestedLogs.tsx
+            |       |-- EmployeeSearchInput.tsx
+            |       |-- InfoTooltip.tsx
+            |       |-- InputField.tsx
+            |       |-- NestedAllocationLogs.tsx
+            |       |-- Sidebar.tsx
+            |       |-- Spinner.tsx
             |-- guards
             |-- hooks
             |   |-- useDebouncedValue.ts

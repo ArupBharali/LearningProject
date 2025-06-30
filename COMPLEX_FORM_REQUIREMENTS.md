@@ -6,7 +6,7 @@ Let me break it down and give you a solid foundation you can scale from — step
 We'll create:
 
 features/
-└── project-form/
+└── projects/
     ├── components/
     │   ├── ProjectFormStepper.tsx
     │   ├── steps/
@@ -21,14 +21,14 @@ features/
         └── useAutoSave.ts
 Plus:
 
-/api/project-form/draft.ts and /submit.ts
+/api/projects/draft.ts and /submit.ts
 
 src/
 ├── app/
-│   └── project-form/
+│   └── projects/
 │       └── page.tsx
 ├── features/
-│   └── project-form/
+│   └── projects/
 │       ├── components/
 │       │   ├── ProjectFormWizard.tsx
 │       │   └── steps/
