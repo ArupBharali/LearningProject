@@ -61,7 +61,7 @@ function generateEmployee() {
     id: nanoid(),
     name: fullName,
     email: faker.internet.email({ firstName, lastName }).toLowerCase(),
-    phone: faker.phone.number('+91##########'),
+    phone: faker.phone.number({ style: 'international' }),
     photoUrl: faker.image.avatar(),
     joiningDate: faker.date.past({ years: 10 }).toISOString(),
     department: faker.helpers.arrayElement(DEPARTMENTS),

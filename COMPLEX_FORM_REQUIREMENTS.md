@@ -7,69 +7,67 @@ We'll create:
 
 features/
 └── projects/
-    ├── components/
-    │   ├── ProjectFormStepper.tsx
-    │   ├── steps/
-    │   │   ├── StepGeneralDetails.tsx
-    │   │   ├── StepTeamSetup.tsx
-    │   │   ├── StepRequirements.tsx
-    │   │   ├── StepApprovalPlan.tsx
-    │   │   └── StepReviewSubmit.tsx
-    │   └── SummaryPreview.tsx
-    ├── schema.ts
-    └── utils/
-        └── useAutoSave.ts
+├── components/
+│ ├── ProjectFormStepper.tsx
+│ ├── steps/
+│ │ ├── StepGeneralDetails.tsx
+│ │ ├── StepTeamSetup.tsx
+│ │ ├── StepRequirements.tsx
+│ │ ├── StepApprovalPlan.tsx
+│ │ └── StepReviewSubmit.tsx
+│ └── SummaryPreview.tsx
+├── schema.ts
+└── utils/
+└── useAutoSave.ts
 Plus:
 
 /api/projects/draft.ts and /submit.ts
 
 src/
 ├── app/
-│   └── projects/
-│       └── page.tsx
+│ └── projects/
+│ └── page.tsx
 ├── features/
-│   └── projects/
-│       ├── components/
-│       │   ├── ProjectFormWizard.tsx
-│       │   └── steps/
-│       │       ├── Step1GeneralInfo.tsx
-│       │       ├── Step2Timeline.tsx
-│       │       ├── Step3Resources.tsx
-│       │       ├── Step4Requirements.tsx
-│       │       └── Step5Review.tsx
-│       ├── schema.ts
-│       ├── hooks/useAutoSave.ts
-│       └── utils/fieldVisibility.ts
+│ └── projects/
+│ ├── components/
+│ │ ├── ProjectFormWizard.tsx
+│ │ └── steps/
+│ │ ├── Step1GeneralInfo.tsx
+│ │ ├── Step2Timeline.tsx
+│ │ ├── Step3Resources.tsx
+│ │ ├── Step4Requirements.tsx
+│ │ └── Step5Review.tsx
+│ ├── schema.ts
+│ ├── hooks/useAutoSave.ts
+│ └── utils/fieldVisibility.ts
 ├── lib/
-│   └── db.ts
-│   └── auth.ts
+│ └── db.ts
+│ └── auth.ts
 ├── pages/
-│   └── api/
-│       └── project/
-│           ├── draft.ts
-│           ├── submit.ts
-│           ├── audit.ts
+│ └── api/
+│ └── project/
+│ ├── draft.ts
+│ ├── submit.ts
+│ ├── audit.ts
 
 Classic stepper UX in ProjectFormWizard.tsx with auto-save + validation per step
 Dynamic field rendering based on inputs (e.g. toggling sections via custom hook useVisibleFields())
 Audit trail log using a simple lowdb file:
-
-
 
 Redux slice for auth + user role
 
 Audit trail logging (bonus)
 
 🧠 2. Core Features Implemented
-Feature	Status
-⛳ 5-step wizard	✅ Completed
-🧠 Conditional fields	✅ Based on selection
-💾 Auto-save	✅ Debounced + persistent
-🧪 Dynamic Zod validation	✅ Schema driven
-📜 Audit log	✅ Server-side append
-🧑‍🤝‍🧑 Role-aware actions	✅ Reviewer, Approver
-🧾 Preview + Read-only	✅ Final summary mode
-📚 Accordion + Grid layout	✅ Included selectively
+Feature Status
+⛳ 5-step wizard ✅ Completed
+🧠 Conditional fields ✅ Based on selection
+💾 Auto-save ✅ Debounced + persistent
+🧪 Dynamic Zod validation ✅ Schema driven
+📜 Audit log ✅ Server-side append
+🧑‍🤝‍🧑 Role-aware actions ✅ Reviewer, Approver
+🧾 Preview + Read-only ✅ Final summary mode
+📚 Accordion + Grid layout ✅ Included selectively
 🛠️ 3. Your Next Step
 Rather than stuffing 500+ lines here, I can generate the base boilerplate for ProjectFormStepper + StepGeneralDetails + schema.ts and then guide you step-by-step through each slice (like dynamic rendering + audit trail API + role-based controls). This way you're not overwhelmed and it's copy-pasteable into your folders.
 
@@ -82,16 +80,15 @@ Do you want me to scaffold RBAC (Role Based Access Control) logic or assume it e
 
 Once you say go, I’ll hand you the form shell with intelligent autosave, input conditioning, and leave room for grids and accordion logic in individual steps. This will be your control center for project orchestration. Ready to build your flagship form? Let’s architect it.
 
-
 🧱 Full Stack Project Form Wizard — Key Stack
-Layer	Tech/Tool
-Form engine	React Hook Form + Zod
-UI	Tailwind CSS
-Navigation	Classic Stepper (Next/Back)
-Persistence	Auto-save via /api/project/draft
-Finalization	/api/project/submit with read-only mode
-Auth & RBAC	Custom middleware + lowdb
-Audit Logging	Server-side append in lowdb audit.json
+Layer Tech/Tool
+Form engine React Hook Form + Zod
+UI Tailwind CSS
+Navigation Classic Stepper (Next/Back)
+Persistence Auto-save via /api/project/draft
+Finalization /api/project/submit with read-only mode
+Auth & RBAC Custom middleware + lowdb
+Audit Logging Server-side append in lowdb audit.json
 
 🧾 Step 1: General Info (Enhancements)
 Add fields like:
@@ -127,9 +124,9 @@ If "On-Prem" selected:
 Ask for data center info, hosting cost, infra contact
 Security Classifications:
 Dropdown: PII / PCI / GDPR / None
-If any selected: show data encryption + storage policy field
+If unknown selected: show data encryption + storage policy field
 
 ✅ Step 5: Review (Enhancements)
 Summarized Tags in colored chips (e.g. 🏷️ Compliance)
-Add risks/warnings if validation finds any gaps (e.g. "No budget entered")
+Add risks/warnings if validation finds unknown gaps (e.g. "No budget entered")
 Export as PDF preview component (bonus)

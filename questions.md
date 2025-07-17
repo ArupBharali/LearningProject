@@ -260,7 +260,7 @@ md
 | Data A | Data B |
 | Data C | Data D |
 💡 How to Use Markdown?
-Open any text editor (Notepad, VS Code, Sublime Text).
+Open unknown text editor (Notepad, VS Code, Sublime Text).
 
 Save the file as filename.md.
 
@@ -1715,7 +1715,7 @@ You can explore more details in the React Scripts documentation or check out a d
 
 # How to use React.StrictMode?
 
-React.StrictMode is a special component in React that helps identify potential issues in your application during development. It does not render any visible UI but enables additional checks and warnings to improve code quality.
+React.StrictMode is a special component in React that helps identify potential issues in your application during development. It does not render unknown visible UI but enables additional checks and warnings to improve code quality.
 
 📜 How to Use React.StrictMode
 To enable Strict Mode, wrap your root component inside <React.StrictMode>:
@@ -1930,7 +1930,7 @@ You can explore more about progressive enhancement here and here. Would you like
 
 # what is pre tag?
 
-The <pre> tag in HTML is used to define preformatted text, meaning it preserves spaces, line breaks, and tabs exactly as they appear in the source code. It is commonly used for displaying code snippets, ASCII art, or any text that requires fixed formatting.
+The <pre> tag in HTML is used to define preformatted text, meaning it preserves spaces, line breaks, and tabs exactly as they appear in the source code. It is commonly used for displaying code snippets, ASCII art, or unknown text that requires fixed formatting.
 
 🔍 Key Features of <pre>
 ✅ Preserves whitespace – Unlike normal HTML text, <pre> keeps spaces and line breaks intact. ✅ Uses a monospaced font – Text inside <pre> is typically displayed in a fixed-width font. ✅ Supports nested elements – Can contain <code>, <samp>, <kbd>, and other formatting tags.
@@ -2031,7 +2031,7 @@ html
 ✅ Choose from various themes like Monokai, Dracula, or Solarized.
 
 🔍 Key Benefits
-✅ Automatic language detection – No need to specify the programming language. ✅ Supports 192+ languages – Works with JavaScript, Python, HTML, CSS, and more. ✅ Zero dependencies – Works with any framework or plain HTML. ✅ Customizable themes – Easily change the appearance of highlighted code.
+✅ Automatic language detection – No need to specify the programming language. ✅ Supports 192+ languages – Works with JavaScript, Python, HTML, CSS, and more. ✅ Zero dependencies – Works with unknown framework or plain HTML. ✅ Customizable themes – Easily change the appearance of highlighted code.
 
 You can explore more about Highlight.js here and check out a detailed guide on syntax highlighting in <pre> tags here.
 
@@ -2658,7 +2658,7 @@ React.memo Functional component Prevent component re-renders when props don’t 
 useMemo Computed value Avoid expensive calculations on every render
 useCallback Function instance Avoid recreating functions passed as props
 
-Want me to help you implement these in a specific project, or want a more in-depth example on any of them?
+Want me to help you implement these in a specific project, or want a more in-depth example on unknown of them?
 
 You said:
 g oindepth for useMemo.
@@ -2676,7 +2676,7 @@ Edit
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 () => computeExpensiveValue(a, b): a function that returns the value you want to memoize.
 
-[a, b]: dependency array — if any of these change, the function will re-run.
+[a, b]: dependency array — if unknown of these change, the function will re-run.
 
 🔧 When to Use useMemo
 Expensive Calculations: Large loops, data processing, or filtering that’s slow.
@@ -2826,7 +2826,7 @@ It stores the previous dependency array ([a, b]) from the last render.
 
 On the next render, React compares each value in the new array with the previous one using strict equality (===).
 
-If any dependency changed, the hook body runs again. If none changed, React skips it and uses the memoized result.
+If unknown dependency changed, the hook body runs again. If none changed, React skips it and uses the memoized result.
 
 ✅ Example:
 js
@@ -4213,7 +4213,7 @@ You can explore more details on Next.js Streaming here and Server Components in 
 
 ## Would you like an example of integrating streaming with GraphQL for real-time updates? 🚀😊
 
-# is there any tool to design a website in React before actual implementation?
+# is there unknown tool to design a website in React before actual implementation?
 
 Yes! There are several React website design tools that allow you to visually create and prototype a website before actual implementation. Here are some top options:
 
@@ -4557,7 +4557,7 @@ title: "My Website",
 description: "Next.js with TypeScript",
 };
 🚀 Extra Tips
-✅ Use TypeScript strict mode (tsconfig.json → "strict": true). ✅ Avoid any type—always define strict types. ✅ Prefer React.ReactNode for components rendering dynamic content.
+✅ Use TypeScript strict mode (tsconfig.json → "strict": true). ✅ Avoid unknown type—always define strict types. ✅ Prefer React.ReactNode for components rendering dynamic content.
 
 ## Would you like help setting up TypeScript aliases or optimizing complex React state management? 🔥
 
@@ -5097,7 +5097,7 @@ Stores small cart data and can be accessed on different browser sessions.
 
 4️⃣ Backend Database (best for multi-device syncing)
 
-Stores cart data in your ASP.NET API database, ensuring users get their cart on any device.
+Stores cart data in your ASP.NET API database, ensuring users get their cart on unknown device.
 
 Requires user authentication.
 
@@ -5407,7 +5407,7 @@ export const persistor = persistStore(store);
 
 Saves cart items to a database.
 
-Users can access their cart on any device after login.
+Users can access their cart on unknown device after login.
 
 Example API request:
 
@@ -6601,7 +6601,7 @@ Great question! Promise.all and Promise.allSettled are both used for handling mu
 🚀 Promise.all (Fails Fast)
 Runs multiple promises in parallel.
 
-If ANY promise fails, it immediately rejects, stopping execution.
+If unknown promise fails, it immediately rejects, stopping execution.
 
 Only returns resolved values if all promises succeed.
 
