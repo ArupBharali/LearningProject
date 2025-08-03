@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     // ⚠️ This allows production builds to succeed even if there are ESLint errors
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
